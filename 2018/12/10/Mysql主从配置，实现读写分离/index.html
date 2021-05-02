@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN,en,default">
+
+<head>
+  
+  <title>Mysql主从配置，实现读写分离 - 最终幻想</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="一个程序员的心路。">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
+  <meta name="description" content="大型网站为了软解大量的并发访问，除了在网站实现分布式负载均衡，远远不够。到了数据业务层、数据访问层，如果还是传统的数据结构，或者只是单单靠一台服务器扛，如此多的数据库连接操作，数据库必然会崩溃，数据丢失的话，后果更是 不堪设想。这时候，我们会考虑如何减少数据库的联接，一方面采用优秀的代码框架，进行代码的优化，采用优秀的数据缓存技术如：memcached,如果资金丰厚的话，必然会想到假设服务器群，来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql主从配置，实现读写分离">
+<meta property="og:url" content="https://alexguo.net/2018/12/10/Mysql%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/index.html">
+<meta property="og:site_name" content="最终幻想">
+<meta property="og:description" content="大型网站为了软解大量的并发访问，除了在网站实现分布式负载均衡，远远不够。到了数据业务层、数据访问层，如果还是传统的数据结构，或者只是单单靠一台服务器扛，如此多的数据库连接操作，数据库必然会崩溃，数据丢失的话，后果更是 不堪设想。这时候，我们会考虑如何减少数据库的联接，一方面采用优秀的代码框架，进行代码的优化，采用优秀的数据缓存技术如：memcached,如果资金丰厚的话，必然会想到假设服务器群，来">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://alexoss1.oss-cn-beijing.aliyuncs.com/test/141118216966295.png">
+<meta property="article:published_time" content="2018-12-10T03:57:28.000Z">
+<meta property="article:modified_time" content="2021-04-30T11:20:36.260Z">
+<meta property="article:author" content="Alex Guo">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://alexoss1.oss-cn-beijing.aliyuncs.com/test/141118216966295.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css?v=1619942251070">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Alex Guo" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Alex Guo"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Alex Guo">
+            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Alex Guo" alt="Alex Guo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>36</div>
+        <div><span>标签</span>33</div>
+        <div><span>分类</span>10</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/android/">android</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">11</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/linux/">linux</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/no-sql/">no sql</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/spring/">spring</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大数据/">大数据</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/家常/">家常</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/常用工具/">常用工具</a>
+          <span class="category-list-count">5</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据库/">数据库</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/网络/">网络</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/bin-log/" style="font-size: 13.33px;">bin_log</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/filebeat/" style="font-size: 10px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/hbase/" style="font-size: 10px;">hbase</a> <a href="/tags/hdfs/" style="font-size: 10px;">hdfs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">java基础</a> <a href="/tags/jvm/" style="font-size: 13.33px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/logstash-forward/" style="font-size: 10px;">logstash-forward</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 16.67px;">mysql</a> <a href="/tags/netty/" style="font-size: 10px;">netty</a> <a href="/tags/pcloud/" style="font-size: 20px;">pcloud</a> <a href="/tags/rocketMQ/" style="font-size: 10px;">rocketMQ</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring cloud</a> <a href="/tags/spring-cloud-stream/" style="font-size: 10px;">spring cloud stream</a> <a href="/tags/spring-rabbitMQ/" style="font-size: 10px;">spring rabbitMQ</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 13.33px;">其他</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/" style="font-size: 10px;">数据采集</a> <a href="/tags/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/" style="font-size: 10px;">日志分析</a>
+    </div>
+    
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 Alex Guo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Mysql主从配置，实现读写分离" class="lazyload">
+            <h1>Mysql主从配置，实现读写分离</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月10日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.4k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
+</div>
+
+    <p>大型网站为了软解大量的并发访问，除了在网站实现分布式负载均衡，远远不够。到了数据业务层、数据访问层，如果还是传统的数据结构，或者只是单单靠一台服务器扛，如此多的数据库连接操作，数据库必然会崩溃，数据丢失的话，后果更是 不堪设想。这时候，我们会考虑如何减少数据库的联接，一方面采用优秀的代码框架，进行代码的优化，采用优秀的数据缓存技术如：memcached,如果资金丰厚的话，必然会想到假设服务器群，来分担主数据库的压力。</p>
+<p>Ok切入今天微博主题，利用MySQL主从配置，实现读写分离，减轻数据库压力。这种方式，在如今很多网站里都有使用，也不是什么新鲜事情，今天总结一下，方便大家学习参考一下。</p>
+<p><strong>概述</strong>：搭设一台Master服务器（win8.1系统，Ip：192.168.0.104），搭设两台Slave服务器（虚拟机——一台Ubuntu，一台 Windows Server 2003）</p>
+<p><strong>原理</strong>：主服务器（Master）负责网站NonQuery操作，从服务器负责Query操作，用户可以根据网站功能模特性块固定访问Slave服务器，或者自己写个池或队列，自由为请求分配从服务器连接。主从服务器利用MySQL的二进制日志文件，实现数据同步。二进制日志由主服务器产生，从服务器响应获取同步数据库。</p>
+<h2 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h2><p><strong>1、在主从服务器上都装上MySQL数据库</strong> </p>
+<p>windows系统鄙人安装的是mysql_5.5.25.msi版本，<br>Ubuntu安装的是mysql-5.6.22-linux-glibc2.5-i686.tar</p>
+<p>windows安装mysql就不谈了，一般地球人都应该会。鄙人稍微说一下Ubuntu的MySQL安装，我建议不要在线下载安装，还是离线安装的好。大家可以参考  <a target="_blank" rel="noopener" href="http://www.linuxidc.com/Linux/2013-01/78716.htm">http://www.linuxidc.com/Linux/2013-01/78716.htm</a> 这位不知道大哥还是姐妹，写的挺好按照这个就能装上。在安装的时候可能会出现几种现象，大家可以参考解决一下：</p>
+<p>（1）如果您不是使用root用户登录，建议 su - root 切换到Root用户安装，那就不用老是 sudo 了。</p>
+<p>（2）存放解压的mysql 文件夹，文件夹名字最好改成mysql</p>
+<p>（3）在./support-files/mysql.server start 启动MySQL的时候，可能会出现一个警告，中文意思是启动服务运行读文件时，忽略了my.cnf文件，那是因为my.cnf的文件权限有问题，mysql会认为该文件有危险不会执行。但是mysql还会启动成功，但如果下面配置从服务器参数修改my.cnf文件的时候，你会发现文件改过了，但是重启服务时，修改过后的配置没有执行，而且您 list一下mysql的文件夹下会发现很多.my.cnf.swp等中间文件。这都是因为MySQL启动时没有读取my.cnf的原因。这时只要将my.cnf的文件权限改成my_new.cnf的权限一样就Ok，命令：chmod 644 my.cnf就Ok</p>
+<p>（4）Ubuntu中修改文档内容没有Vim，最好把Vim 装上，apt-get install vim,不然估计会抓狂。</p>
+<p>这时候我相信MySQL应该安装上去了。</p>
+<p><strong>2、配置Master主服务器</strong> </p>
+<p>（1）在Master MySQL上创建一个用户‘repl’，并允许其他Slave服务器可以通过远程访问Master，通过该用户读取二进制日志，实现数据同步。</p>
+<pre><code>1 mysql&gt;create user repl; //创建新用户
+2 //repl用户必须具有REPLICATION SLAVE权限，除此之外没有必要添加不必要的权限，密码为mysql。说明一下192.168.0.%，这个配置是指明repl用户所在服务器，这里%是通配符，表示192.168.0.0-192.168.0.255的Server都可以以repl用户登陆主服务器。当然你也可以指定固定Ip。
+3 mysql&gt; GRANT REPLICATION SLAVE ON *.* TO &#39;repl&#39;@&#39;192.168.0.%&#39; IDENTIFIED BY &#39;mysql&#39;;
+</code></pre>
+<p>（2）找到MySQL安装文件夹修改my.Ini文件。mysql中有好几种日志方式，这不是今天的重点。我们只要启动二进制日志log-bin就ok。</p>
+<p> 在[mysqld]下面增加下面几行代码</p>
+<pre><code> server-id=1   //给数据库服务的唯一标识，一般为大家设置服务器Ip的末尾号
+ log-bin=master-bin
+ log-bin-index=master-bin.index
+</code></pre>
+<p>（3）查看日志</p>
+<pre><code>mysql&gt; SHOW MASTER STATUS;
++-------------------+----------+--------------+------------------+
+| File | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++-------------------+----------+--------------+------------------+
+| master-bin.000001 | 1285 | | |
++-------------------+----------+--------------+------------------+
+1 row in set (0.00 sec)
+
+重启MySQL服务
+</code></pre>
+<p><strong>3、 配置Slave从服务器（windows）</strong></p>
+<p>（1）找到MySQL安装文件夹修改my.ini文件，在[mysqld]下面增加下面几行代码<br> my.cnf 配置</p>
+<pre><code>[mysqld]
+server-id=2
+relay-log-index=slave-relay-bin.index
+relay-log=slave-relay-bin 
+</code></pre>
+<p>重启MySQL服务</p>
+<p>（2）连接Master</p>
+<pre><code>change master to master_host=&#39;192.168.0.104&#39;, //Master 服务器Ip
+master_port=3306,
+master_user=&#39;repl&#39;,
+master_password=&#39;mysql&#39;, 
+master_log_file=&#39;master-bin.000001&#39;,//Master服务器产生的日志
+master_log_pos=0;
+</code></pre>
+<p>（3）启动Slave</p>
+<pre><code>start slave;
+</code></pre>
+<p><strong>4、 Slave从服务器（Ubuntu）</strong></p>
+<p>（1）找到MySQL安装文件夹修改my.cnf文件,vim my.cnf</p>
+<p> <img data-fancybox="gallery" data-sizes="auto" data-src="http://alexoss1.oss-cn-beijing.aliyuncs.com/test/141118216966295.png" alt="图片" class="lazyload"></p>
+<p>（2） 重启</p>
+<pre><code>./support-files/myql.server restart 重启MySQL服务  ,  
+./bin/mysql 进入MySQL命令窗口 
+</code></pre>
+<p>（3）连接Master</p>
+<pre><code>change master to master_host=&#39;192.168.0.104&#39;, //Master 服务器Ip
+master_port=3306,
+master_user=&#39;repl&#39;,
+master_password=&#39;mysql&#39;, 
+master_log_file=&#39;master-bin.000001&#39;,//Master服务器产生的日志
+master_log_pos=0;
+</code></pre>
+<p>（4）启动Slave</p>
+<pre><code>start slave;
+</code></pre>
+<p>OK所有配置都完成了，这时候大家可以在Master Mysql 中进行测试了，因为我们监视的时Master mysql  所有操作日志，所以，你的任何改变主服务器数据库的操作，都会同步到从服务器上。创建个数据库，表试试吧。。。</p>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>Alex Guo<br>
+    <strong>本文链接：</strong><a href="https://alexguo.net/2018/12/10/Mysql%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/" title="https:&#x2F;&#x2F;alexguo.net&#x2F;2018&#x2F;12&#x2F;10&#x2F;Mysql%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;alexguo.net&#x2F;2018&#x2F;12&#x2F;10&#x2F;Mysql%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/mysql/" rel="tag">mysql</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+        <!--<div class="nexmoe-post-right">
+          <div class="nexmoe-fixed">
+            <div class="nexmoe-tool">
+              <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+            </div>
+          </div>
+        </div>-->
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1619942251071"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+  
+
+
+
+
+
+</body>
+
+</html>

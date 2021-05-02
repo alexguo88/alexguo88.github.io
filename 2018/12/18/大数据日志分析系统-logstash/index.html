@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN,en,default">
+
+<head>
+  
+  <title>大数据日志分析系统-logstash - 最终幻想</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="一个程序员的心路。">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
+  <meta name="description" content="logstash简介Logstash 是一个开源的数据收集引擎，它具有备实时数据传输能力。它可以统一过滤来自不同源的数据，并按照开发者的制定的规范输出到目的地。 logstash-2.2.2的配置：从logstash-forward 到kafka的配置ubuntu@sp1:~&#x2F;logstashBeforeChangeConf$ cat &#x2F;home&#x2F;ubuntu&#x2F;logstash-2.2.2&#x2F;con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大数据日志分析系统-logstash">
+<meta property="og:url" content="https://alexguo.net/2018/12/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F-logstash/index.html">
+<meta property="og:site_name" content="最终幻想">
+<meta property="og:description" content="logstash简介Logstash 是一个开源的数据收集引擎，它具有备实时数据传输能力。它可以统一过滤来自不同源的数据，并按照开发者的制定的规范输出到目的地。 logstash-2.2.2的配置：从logstash-forward 到kafka的配置ubuntu@sp1:~&#x2F;logstashBeforeChangeConf$ cat &#x2F;home&#x2F;ubuntu&#x2F;logstash-2.2.2&#x2F;con">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-18T07:27:45.000Z">
+<meta property="article:modified_time" content="2021-04-30T11:20:36.264Z">
+<meta property="article:author" content="Alex Guo">
+<meta property="article:tag" content="logstash">
+<meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css?v=1619942251062">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Alex Guo" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Alex Guo"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Alex Guo">
+            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Alex Guo" alt="Alex Guo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>36</div>
+        <div><span>标签</span>33</div>
+        <div><span>分类</span>10</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/android/">android</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">11</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/linux/">linux</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/no-sql/">no sql</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/spring/">spring</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大数据/">大数据</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/家常/">家常</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/常用工具/">常用工具</a>
+          <span class="category-list-count">5</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据库/">数据库</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/网络/">网络</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/bin-log/" style="font-size: 13.33px;">bin_log</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/filebeat/" style="font-size: 10px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/hbase/" style="font-size: 10px;">hbase</a> <a href="/tags/hdfs/" style="font-size: 10px;">hdfs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">java基础</a> <a href="/tags/jvm/" style="font-size: 13.33px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/logstash-forward/" style="font-size: 10px;">logstash-forward</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 16.67px;">mysql</a> <a href="/tags/netty/" style="font-size: 10px;">netty</a> <a href="/tags/pcloud/" style="font-size: 20px;">pcloud</a> <a href="/tags/rocketMQ/" style="font-size: 10px;">rocketMQ</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring cloud</a> <a href="/tags/spring-cloud-stream/" style="font-size: 10px;">spring cloud stream</a> <a href="/tags/spring-rabbitMQ/" style="font-size: 10px;">spring rabbitMQ</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 13.33px;">其他</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/" style="font-size: 10px;">数据采集</a> <a href="/tags/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/" style="font-size: 10px;">日志分析</a>
+    </div>
+    
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 Alex Guo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="大数据日志分析系统-logstash" class="lazyload">
+            <h1>大数据日志分析系统-logstash</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月18日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.1k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
+</div>
+
+    <h1 id="logstash简介"><a href="#logstash简介" class="headerlink" title="logstash简介"></a>logstash简介</h1><p>Logstash 是一个开源的数据收集引擎，它具有备实时数据传输能力。它可以统一过滤来自不同源的数据，并按照开发者的制定的规范输出到目的地。</p>
+<h1 id="logstash-2-2-2的配置："><a href="#logstash-2-2-2的配置：" class="headerlink" title="logstash-2.2.2的配置："></a>logstash-2.2.2的配置：</h1><h2 id="从logstash-forward-到kafka的配置"><a href="#从logstash-forward-到kafka的配置" class="headerlink" title="从logstash-forward 到kafka的配置"></a>从logstash-forward 到kafka的配置</h2><pre><code>ubuntu@sp1:~/logstashBeforeChangeConf$ cat /home/ubuntu/logstash-2.2.2/config/before-kafka-access.conf
+
+
+input &#123;
+      lumberjack &#123;
+                    port =&gt; &quot;5044&quot;
+                    ssl_certificate =&gt; &quot;/home/ubuntu/logstash-2.2.2/config/lumberjack.crt&quot;
+                    ssl_key =&gt;  &quot;/home/ubuntu/logstash-2.2.2/config/lumberjack.key&quot;
+                    type =&gt; &quot;fc_access&quot;
+                  &#125;
+      &#125;
+
+output &#123;
+       if &quot;_grokparsefailure&quot; not in [tags] &#123;
+    #       stdout &#123; codec =&gt; rubydebug &#125;
+       kafka &#123;
+                topic_id =&gt; &quot;kafka_es&quot;
+                bootstrap_servers =&gt; &quot;sp1:9092,sp2:9092,sp3:9092,sp4:9092,sp5:9092,sp6:9092,sp7:9092&quot;
+                compression_type =&gt; &quot;snappy&quot; 
+                acks =&gt; [&quot;1&quot;]
+                value_serializer =&gt; &quot;org.apache.kafka.common.serialization.StringSerializer&quot;
+                timeout_ms =&gt; 10000
+                retries =&gt; 5
+                retry_backoff_ms =&gt; 100
+                send_buffer_bytes =&gt; 102400   
+                workers =&gt; 2
+             &#125;
+      &#125;
+&#125;
+</code></pre>
+<h2 id="从kafka到es配置"><a href="#从kafka到es配置" class="headerlink" title="从kafka到es配置"></a>从kafka到es配置</h2><p>其中包括了对日志各个字段的解析,以及对异常日志过滤（同时注意其中过滤了 不属于当前时间前后5天的时间的日志，为了防止异常日志创建索引过多导致es报红）</p>
+<pre><code>ubuntu@sp1:~/logstashAfterChangeConf$ cat /home/ubuntu/logstash-2.2.2/config/after-kafa-access.conf
+
+input &#123;
+      kafka &#123;
+        topic_id =&gt; &quot;kafka_es&quot;
+        group_id =&gt; &quot;kafka_es&quot;
+        zk_connect =&gt; &quot;sp1:2181,sp2:2181,sp3:2181,sp4:2181,sp5:2181,sp6:2181,sp7:2181&quot; 
+        consumer_threads =&gt; 1
+        consumer_restart_on_error =&gt; true
+        consumer_restart_sleep_ms =&gt; 5000
+        decorate_events =&gt; true
+        consumer_timeout_ms =&gt; 1000
+        queue_size =&gt; 100
+        auto_offset_reset =&gt; &quot;smallest&quot;
+        rebalance_max_retries =&gt; 50
+      &#125;
+&#125;
+
+filter &#123;
+       mutate &#123;
+             add_field =&gt; [ &quot;messageClone&quot;, &quot;%&#123;message&#125;&quot; ]
+       &#125;
+
+       mutate &#123;
+             split =&gt; &#123; &quot;messageClone&quot; =&gt; &#39;&quot;&#39; &#125;
+            add_field =&gt; &#123;&quot;agent&quot; =&gt; &quot;%&#123;[messageClone][3]&#125;&quot;&#125;
+
+       &#125;
+       useragent &#123; 
+              source =&gt; &quot;agent&quot; 
+       &#125;
+
+       mutate &#123;
+            split =&gt; &#123; &quot;message&quot; =&gt; &quot; &quot; &#125;
+            add_field =&gt; &#123;&quot;timestamp&quot; =&gt; &quot;%&#123;[message][0]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;reqtime&quot; =&gt; &quot;%&#123;[message][1]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;clientIP&quot; =&gt; &quot;%&#123;[message][2]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;squidCache&quot; =&gt; &quot;%&#123;[message][3]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;repsize&quot; =&gt; &quot;%&#123;[message][4]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;reqMethod&quot; =&gt; &quot;%&#123;[message][5]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;requestURL&quot; =&gt; &quot;%&#123;[message][6]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;username&quot; =&gt; &quot;%&#123;[message][7]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;requestOriginSite&quot; =&gt; &quot;%&#123;[message][8]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;mime&quot; =&gt; &quot;%&#123;[message][9]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;referer&quot; =&gt; &quot;%&#123;[message][10]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;agentCheck&quot; =&gt; &quot;%&#123;[message][11]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;dnsGroup&quot; =&gt; &quot;%&#123;[message][-1]&#125;&quot;&#125;
+            remove_field =&gt; [&quot;offset&quot;, &quot;kafka&quot;, &quot;@version&quot;, &quot;file&quot;, &quot;message&quot;, &quot;messageClone&quot;]
+
+       &#125;
+
+
+
+       if [agentCheck] =~ &quot;ChinaCache&quot; &#123;
+
+         grok &#123; match =&gt; &#123; &quot;agentCheck&quot; =&gt; &quot;OOPS&quot; &#125; &#125;
+
+       &#125;
+
+
+
+       mutate &#123;
+
+          convert =&gt; &#123;
+
+                &quot;timestamp&quot; =&gt; &quot;float&quot;       
+
+            &quot;reqtime&quot; =&gt; &quot;integer&quot;
+
+          &quot;repsize&quot; =&gt; &quot;integer&quot;
+
+          &#125;
+
+      remove_field =&gt; [&quot;agentCheck&quot;]
+
+       &#125;
+
+
+
+
+
+       ruby &#123;
+
+       code =&gt; &quot;event[&#39;timestamp_str&#39;] = Time.at(event[&#39;timestamp&#39;]).strftime(&#39;%Y-%m-%dT%H:%M:%S.%LZ&#39;)&quot;
+
+       &#125;
+
+
+
+       date &#123; match =&gt; [ &quot;timestamp_str&quot;, &quot;ISO8601&quot; ] 
+
+       &#125;
+
+
+
+       mutate &#123;
+
+             split =&gt; &#123; &quot;requestURL&quot; =&gt; &#39;/&#39; &#125;
+
+      add_field =&gt; &#123;&quot;uriHost&quot; =&gt; &quot;%&#123;[requestURL][2]&#125;&quot;&#125;
+
+      remove_field =&gt; [&quot;timestamp_str&quot;]
+
+       &#125;
+
+
+
+       mutate &#123;
+
+             join =&gt; &#123; &quot;requestURL&quot; =&gt; &#39;/&#39; &#125;
+
+       &#125;
+
+
+
+       ruby &#123;
+
+              code =&gt; &quot;event.cancel if 5 * 24 * 3600 &lt; (event[&#39;@timestamp&#39;]-::Time.now).abs&quot;
+
+       &#125;
+
+
+
+
+
+&#125;
+
+
+
+output &#123;
+
+if &quot;ChinaCache&quot; not in [agent] &#123;
+
+#                   stdout &#123; codec =&gt; &quot;rubydebug&quot; &#125;
+
+                   elasticsearch &#123;
+
+                         index =&gt; &quot;logstash-%&#123;+YYYY.MM.dd.HH&#125;&quot;
+
+                         workers =&gt; 1
+
+                         flush_size =&gt; 5000
+
+                         idle_flush_time =&gt; 1
+
+                         hosts =&gt; [&quot;es-ip-1:9200&quot;,&quot;es-ip-2:9200&quot;,&quot;es-ip-3:9200&quot;,&quot;es-ip-4:9200&quot;,&quot;es-ip-5:9200&quot;,&quot;es-ip-6:9200&quot;,&quot;es-ip-7:9200&quot;]
+
+
+
+                         &#125;
+
+        &#125;
+
+&#125;
+</code></pre>
+<h1 id="启动命令："><a href="#启动命令：" class="headerlink" title="启动命令："></a>启动命令：</h1><pre><code>nohup /home/ubuntu/logstash-2.2.2/bin/logstash -f /home/ubuntu/logstash-2.2.2/config/after-kafa-access.conf 2&gt;&amp;1 &gt; /home/ubuntu/logstash-2.2.2/logs/logstash-after-kafka-access.log &amp;
+</code></pre>
+<pre><code>nohup /home/ubuntu/logstash-2.2.2/bin/logstash -f /home/ubuntu/logstash-2.2.2/config/before-kafka-access.conf 2&gt;&amp;1 &gt; /home/ubuntu/logstash-2.2.2/logs/logstash-before-kafka.log &amp;
+</code></pre>
+<h1 id="logstash-6-1-1配置"><a href="#logstash-6-1-1配置" class="headerlink" title="logstash-6.1.1配置"></a>logstash-6.1.1配置</h1><p>##从filbeat到kafka的配置</p>
+<pre><code>ubuntu@sp26:~/apps/logstash-6.1.1$ cat filebeat5055-kafkasp26-3.conf
+
+
+
+input &#123;
+
+    beats &#123;
+
+        port =&gt; &quot;5055&quot;
+
+type =&gt; &quot;log&quot;
+
+    &#125;
+
+&#125;
+
+output &#123;
+
+#   stdout &#123; codec =&gt; rubydebug &#125;
+
+  kafka &#123;
+
+    codec =&gt; &quot;json&quot;
+
+    bootstrap_servers =&gt; &quot;37:9092,38:9092,39:9092,40:9092,41:9092&quot;
+
+    topic_id =&gt; &quot;test&quot;
+
+compression_type =&gt; &quot;snappy&quot;
+
+value_serializer =&gt; &quot;org.apache.kafka.common.serialization.StringSerializer&quot;
+
+  &#125;
+
+&#125;
+</code></pre>
+<p>#检测</p>
+<pre><code>/home/ubuntu/apps/logstash-6.1.1/bin/logstash -f /home/ubuntu/apps/logstash-6.1.1/filebeat5055-kafkasp26-3.conf  --config.test_and_exit
+</code></pre>
+<p>#启动</p>
+<p><code>nohup /home/ubuntu/apps/logstash-6.1.1/bin/logstash -f /home/ubuntu/apps/logstash-6.1.1/filebeat5055-kafkasp26-3.conf --config.reload.automatic   2&gt;&amp;1 &gt;  /home/ubuntu/apps/logstash-6.1.1/logs/filebeat5055-kafkasp26-3.log  &amp;</code>　</p>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>Alex Guo<br>
+    <strong>本文链接：</strong><a href="https://alexguo.net/2018/12/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F-logstash/" title="https:&#x2F;&#x2F;alexguo.net&#x2F;2018&#x2F;12&#x2F;18&#x2F;%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F-logstash&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;alexguo.net&#x2F;2018&#x2F;12&#x2F;18&#x2F;%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F-logstash&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/logstash/" rel="tag">logstash</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+        <!--<div class="nexmoe-post-right">
+          <div class="nexmoe-fixed">
+            <div class="nexmoe-tool">
+              <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+            </div>
+          </div>
+        </div>-->
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1619942251062"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+  
+
+
+
+
+
+</body>
+
+</html>

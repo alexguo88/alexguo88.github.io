@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN,en,default">
+
+<head>
+  
+  <title>docker常用命令 - 最终幻想</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="一个程序员的心路。">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
+  <meta name="description" content="关键字： 镜像 images 镜像名 image_name 镜像id image_id 容器 container 容器名 con_name 容器id con_id  从公网拉取一个镜像docker pull images_name  查看已有的docker镜像[root@docker ~]# docker images  查看帮助docker command --help  查看镜像列表docke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker常用命令">
+<meta property="og:url" content="https://alexguo.net/2018/12/07/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="最终幻想">
+<meta property="og:description" content="关键字： 镜像 images 镜像名 image_name 镜像id image_id 容器 container 容器名 con_name 容器id con_id  从公网拉取一个镜像docker pull images_name  查看已有的docker镜像[root@docker ~]# docker images  查看帮助docker command --help  查看镜像列表docke">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-07T03:15:08.000Z">
+<meta property="article:modified_time" content="2021-04-30T11:20:36.260Z">
+<meta property="article:author" content="Alex Guo">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css?v=1619942251076">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Alex Guo" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Alex Guo"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Alex Guo">
+            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Alex Guo" alt="Alex Guo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>36</div>
+        <div><span>标签</span>33</div>
+        <div><span>分类</span>10</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/android/">android</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">11</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/linux/">linux</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/no-sql/">no sql</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/spring/">spring</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大数据/">大数据</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/家常/">家常</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/常用工具/">常用工具</a>
+          <span class="category-list-count">5</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据库/">数据库</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/网络/">网络</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/bin-log/" style="font-size: 13.33px;">bin_log</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/filebeat/" style="font-size: 10px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/hbase/" style="font-size: 10px;">hbase</a> <a href="/tags/hdfs/" style="font-size: 10px;">hdfs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">java基础</a> <a href="/tags/jvm/" style="font-size: 13.33px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/logstash-forward/" style="font-size: 10px;">logstash-forward</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 16.67px;">mysql</a> <a href="/tags/netty/" style="font-size: 10px;">netty</a> <a href="/tags/pcloud/" style="font-size: 20px;">pcloud</a> <a href="/tags/rocketMQ/" style="font-size: 10px;">rocketMQ</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring cloud</a> <a href="/tags/spring-cloud-stream/" style="font-size: 10px;">spring cloud stream</a> <a href="/tags/spring-rabbitMQ/" style="font-size: 10px;">spring rabbitMQ</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 13.33px;">其他</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/" style="font-size: 10px;">数据采集</a> <a href="/tags/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/" style="font-size: 10px;">日志分析</a>
+    </div>
+    
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 Alex Guo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="docker常用命令" class="lazyload">
+            <h1>docker常用命令</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月07日</a>
+    <a><i class="nexmoefont icon-areachart"></i>729 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+</div>
+
+    <h2 id="关键字："><a href="#关键字：" class="headerlink" title="关键字："></a>关键字：</h2><ul>
+<li>镜像 images</li>
+<li>镜像名 image_name</li>
+<li>镜像id image_id</li>
+<li>容器 container</li>
+<li>容器名 con_name</li>
+<li>容器id con_id</li>
+</ul>
+<h2 id="从公网拉取一个镜像"><a href="#从公网拉取一个镜像" class="headerlink" title="从公网拉取一个镜像"></a>从公网拉取一个镜像</h2><pre><code class="bash">docker pull images_name
+</code></pre>
+<h2 id="查看已有的docker镜像"><a href="#查看已有的docker镜像" class="headerlink" title="查看已有的docker镜像"></a>查看已有的docker镜像</h2><pre><code class="bash">[root@docker ~]# docker images
+</code></pre>
+<h2 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a>查看帮助</h2><pre><code class="bash">docker command --help
+</code></pre>
+<h2 id="查看镜像列表"><a href="#查看镜像列表" class="headerlink" title="查看镜像列表"></a>查看镜像列表</h2><pre><code>docker search nginx
+</code></pre>
+<h2 id="启动一个容器"><a href="#启动一个容器" class="headerlink" title="启动一个容器"></a>启动一个容器</h2><h3 id="基于hello-world镜像启动一个容器，如果本地没有镜像会从公网拉取过来，这次做为测试用"><a href="#基于hello-world镜像启动一个容器，如果本地没有镜像会从公网拉取过来，这次做为测试用" class="headerlink" title="基于hello-world镜像启动一个容器，如果本地没有镜像会从公网拉取过来，这次做为测试用"></a>基于hello-world镜像启动一个容器，如果本地没有镜像会从公网拉取过来，这次做为测试用</h3><pre><code>docker run hello-world
+</code></pre>
+<h2 id="导出镜像"><a href="#导出镜像" class="headerlink" title="导出镜像"></a>导出镜像</h2><pre><code>docker save -o image_name.tar image_name
+</code></pre>
+<h2 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h2><pre><code>docker rm image_name
+</code></pre>
+<h2 id="启动一个容器-1"><a href="#启动一个容器-1" class="headerlink" title="启动一个容器"></a>启动一个容器</h2><pre><code>docker run --name=con_name images
+# --name  #设置容器名
+</code></pre>
+<h2 id="基于创建好的容器自定义docker镜像"><a href="#基于创建好的容器自定义docker镜像" class="headerlink" title="基于创建好的容器自定义docker镜像"></a>基于创建好的容器自定义docker镜像</h2><pre><code>docker commit -m &quot;con_name&quot; con_id image_name
+</code></pre>
+<h2 id="创建一个容器的同时进入这个容器"><a href="#创建一个容器的同时进入这个容器" class="headerlink" title="创建一个容器的同时进入这个容器"></a>创建一个容器的同时进入这个容器</h2><pre><code>docker run -it --name=con_name images
+# -it     #在启动之后进入这个容器
+</code></pre>
+<h2 id="创建一个容器，放入后台运行，把物理机80端口映射到容器的80端口"><a href="#创建一个容器，放入后台运行，把物理机80端口映射到容器的80端口" class="headerlink" title="创建一个容器，放入后台运行，把物理机80端口映射到容器的80端口"></a>创建一个容器，放入后台运行，把物理机80端口映射到容器的80端口</h2><pre><code>docker run -d -p 81:80 image_name
+</code></pre>
+<h3 id="p-参数说明"><a href="#p-参数说明" class="headerlink" title="-p 参数说明"></a>-p 参数说明</h3><p>-p hostPort:containerPort<br>-p ip:hostPort:containerPort<br>-p ip::containerPort<br>-p hostPort:containerPort:udp</p>
+<h2 id="看容器的端口映射情况"><a href="#看容器的端口映射情况" class="headerlink" title="看容器的端口映射情况"></a>看容器的端口映射情况</h2><pre><code>docker port con_id
+</code></pre>
+<h2 id="查看正在运行的容器"><a href="#查看正在运行的容器" class="headerlink" title="查看正在运行的容器"></a>查看正在运行的容器</h2><pre><code>docker ps 
+</code></pre>
+<h2 id="查看所有的容器"><a href="#查看所有的容器" class="headerlink" title="查看所有的容器"></a>查看所有的容器</h2><pre><code>docker ps -a
+</code></pre>
+<h2 id="动态查看容器日志"><a href="#动态查看容器日志" class="headerlink" title="动态查看容器日志"></a>动态查看容器日志</h2><pre><code>docker logs -f con_name
+</code></pre>
+<h2 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h2><pre><code>docker attach con_name
+</code></pre>
+<h2 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><pre><code>exit
+</code></pre>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><pre><code>ctrl+p &amp;&amp; ctrl+q (一起按，注意顺序，退出后容器依然保持启动状态)
+</code></pre>
+<h2 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h2><pre><code>docker rm  con_name
+</code></pre>
+<h3 id="强制删除需要加-f，不加-f不能删除正在运行中的容器，非常危险，最好不用"><a href="#强制删除需要加-f，不加-f不能删除正在运行中的容器，非常危险，最好不用" class="headerlink" title="强制删除需要加-f，不加-f不能删除正在运行中的容器，非常危险，最好不用"></a>强制删除需要加-f，不加-f不能删除正在运行中的容器，非常危险，最好不用</h3><h2 id="查看docker网络"><a href="#查看docker网络" class="headerlink" title="查看docker网络"></a>查看docker网络</h2><pre><code class="bash">[root@docker ~]# docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+3f91f2097286        bridge              bridge              local
+d7675dbd247c        docker_gwbridge     bridge              local
+5b36c7e947fd        host                host                local
+ims6qkpikafu        ingress             overlay             swarm
+85ba10e7ef79        none                null                local
+</code></pre>
+<h2 id="创建一个docker网络my-docker"><a href="#创建一个docker网络my-docker" class="headerlink" title="创建一个docker网络my-docker"></a>创建一个docker网络my-docker</h2><pre><code class="bash">docker network create -d bridge \
+--subnet=192.168.0.0/24 \
+--gateway=192.168.0.100 \
+--ip-range=192.168.0.0/24 \
+my-docker
+</code></pre>
+<h2 id="利用刚才创建的网络启动一个容器"><a href="#利用刚才创建的网络启动一个容器" class="headerlink" title="利用刚才创建的网络启动一个容器"></a>利用刚才创建的网络启动一个容器</h2><pre><code class="bash">docker run --network=my-docker --ip=192.168.0.5 -itd --name=con_name -h lb01 image_name
+</code></pre>
+<p>–network   #指定容器网络<br>–ip        #设定容器ip地址<br>-h          #给容器设置主机名</p>
+<h2 id="查看容器pid"><a href="#查看容器pid" class="headerlink" title="查看容器pid"></a>查看容器pid</h2><h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><pre><code>docker top con_name
+</code></pre>
+<h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><pre><code>docker inspect --format &quot;&#123;&#123;.State.Pid&#125;&#125;&quot; con_name
+</code></pre>
+<h2 id="运行dockerfile并给dockerfile创建的镜像建立名字"><a href="#运行dockerfile并给dockerfile创建的镜像建立名字" class="headerlink" title="运行dockerfile并给dockerfile创建的镜像建立名字"></a>运行dockerfile并给dockerfile创建的镜像建立名字</h2><p>docker build -t mysql:3.6.34 <code>pwd</code></p>
+<h2 id="mariadb容器启动前需先设置密码方法"><a href="#mariadb容器启动前需先设置密码方法" class="headerlink" title="mariadb容器启动前需先设置密码方法"></a>mariadb容器启动前需先设置密码方法</h2><p>docker run -d -P -e MYSQL_ROOT_PASSWORD=password  img_id</p>
+<h2 id="docker修改镜像名"><a href="#docker修改镜像名" class="headerlink" title="docker修改镜像名"></a>docker修改镜像名</h2><p>docker tag imageid name:tag</p>
+<h2 id="进入docker容器脚本"><a href="#进入docker容器脚本" class="headerlink" title="进入docker容器脚本"></a>进入docker容器脚本</h2><pre><code class="bash">[root@docker ~]# cat nsenter.sh 
+PID=`docker inspect --format &quot;&#123;&#123;.State.Pid&#125;&#125;&quot; $1`
+nsenter -t $PID -u --mount -i -n -p
+</code></pre>
+<h2 id="创建一个网络"><a href="#创建一个网络" class="headerlink" title="创建一个网络"></a>创建一个网络</h2><pre><code>docker network create --driver bridge --subnet 172.22.16.0/24 --gateway 172.22.16.1 my_net2
+</code></pre>
+<h2 id="将容器添加到my-net2网络-connect"><a href="#将容器添加到my-net2网络-connect" class="headerlink" title="将容器添加到my_net2网络 connect"></a>将容器添加到my_net2网络 connect</h2><pre><code>docker network connect my_net2 oldboy1
+</code></pre>
+<h2 id="docker日志模块-使用filebeat收集日志"><a href="#docker日志模块-使用filebeat收集日志" class="headerlink" title="docker日志模块 使用filebeat收集日志"></a>docker日志模块 使用filebeat收集日志</h2><pre><code>&#123;
+  &quot;registry-mirrors&quot;: [&quot;https://56px195b.mirror.aliyuncs.com&quot;],
+  &quot;cluster-store&quot;:&quot;consul://192.168.56.13:8500&quot;,
+  &quot;cluster-advertise&quot;: &quot;192.168.56.11:2375&quot;,
+  &quot;log-driver&quot;: &quot;fluentd&quot;,
+  &quot;log-opts&quot;: &#123;
+        &quot;fluentd-address&quot;:&quot;192.168.56.13:24224&quot;,
+        &quot;tag&quot;:&quot;linux-node1.example.com&quot;
+        &#125;
+&#125;
+</code></pre>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>Alex Guo<br>
+    <strong>本文链接：</strong><a href="https://alexguo.net/2018/12/07/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="https:&#x2F;&#x2F;alexguo.net&#x2F;2018&#x2F;12&#x2F;07&#x2F;docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;alexguo.net&#x2F;2018&#x2F;12&#x2F;07&#x2F;docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/">常用工具</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/docker/" rel="tag">docker</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+        <!--<div class="nexmoe-post-right">
+          <div class="nexmoe-fixed">
+            <div class="nexmoe-tool">
+              <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+            </div>
+          </div>
+        </div>-->
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1619942251077"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+  
+
+
+
+
+
+</body>
+
+</html>

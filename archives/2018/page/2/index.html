@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN,en,default">
+
+<head>
+  
+  <title>文章归档：2018 - 最终幻想</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="一个程序员的心路。">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
+  <meta name="description" content="一个程序员的心路。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="最终幻想">
+<meta property="og:url" content="https://alexguo.net/archives/2018/page/2/index.html">
+<meta property="og:site_name" content="最终幻想">
+<meta property="og:description" content="一个程序员的心路。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Alex Guo">
+<meta property="article:tag" content="java web sql linux">
+<meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css?v=1619942251094">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Alex Guo" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Alex Guo"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Alex Guo">
+            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Alex Guo" alt="Alex Guo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>36</div>
+        <div><span>标签</span>33</div>
+        <div><span>分类</span>10</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/android/">android</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">11</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/linux/">linux</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/no-sql/">no sql</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/spring/">spring</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大数据/">大数据</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/家常/">家常</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/常用工具/">常用工具</a>
+          <span class="category-list-count">5</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据库/">数据库</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/网络/">网络</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/bin-log/" style="font-size: 13.33px;">bin_log</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/filebeat/" style="font-size: 10px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/hbase/" style="font-size: 10px;">hbase</a> <a href="/tags/hdfs/" style="font-size: 10px;">hdfs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">java基础</a> <a href="/tags/jvm/" style="font-size: 13.33px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/logstash-forward/" style="font-size: 10px;">logstash-forward</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 16.67px;">mysql</a> <a href="/tags/netty/" style="font-size: 10px;">netty</a> <a href="/tags/pcloud/" style="font-size: 20px;">pcloud</a> <a href="/tags/rocketMQ/" style="font-size: 10px;">rocketMQ</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring cloud</a> <a href="/tags/spring-cloud-stream/" style="font-size: 10px;">spring cloud stream</a> <a href="/tags/spring-rabbitMQ/" style="font-size: 10px;">spring rabbitMQ</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 13.33px;">其他</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/" style="font-size: 10px;">数据采集</a> <a href="/tags/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/" style="font-size: 10px;">日志分析</a>
+    </div>
+    
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 Alex Guo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <section class="nexmoe-posts">
+    
+    <div class="nexmoe-post">
+        <a href="/2018/12/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F-elasticsearch/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="大数据日志分析系统-elasticsearch" class="lazyload">
+                    <h1>大数据日志分析系统-elasticsearch</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月18日</a>
+            <a><i class="nexmoefont icon-areachart"></i>748 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
+        </div>
+
+        <article>
+            
+                <h1 id="elasticsearch简介"><a href="#elasticsearch简介" class="headerlink" title="elasticsearch简介"></a>elasticsearch简介</h1><p>Elasticsearch 是一个分布式、可扩展、实时的搜索与数据分析引擎。</p>
+<h1 id="两种架构的es配置差不多"><a href="#两种架构的es配置差不多" class="headerlink" title="两种架构的es配置差不多"></a>两种架构的es配置差不多</h1><h1 id="选用es存储结果数据的理由："><a href="#选用es存储结果数据的理由：" class="headerlink" title="选用es存储结果数据的理由："></a>选用es存储结果数据的理由：</h1><p>1.曾经考虑过hbase选用，也进行过真正的测试，用hbse的问题是这种键值对的数据库，不一定能够保证唯一的键（虽然能把时间戳加入key中），而且es本身只存储结果数据完全符合线上需求，并且es自身带有聚合功能，可以多个条件查询而不只是键值对。</p>
+<h1 id="es原先配置："><a href="#es原先配置：" class="headerlink" title="es原先配置："></a>es原先配置：</h1><p>es总共11个节点  进行了角色分配  其中master节点3个  data节点5个  cient节点3个 (角色分配与 node.master    node.data 有关)</p>
+<pre><code>ubuntu@sp1:~/elasticsearch-5.5.2/config$ cat elasticsearch.yml | grep -v &#39;#&#39;
+
+ cluster.name: webluker-logstash
+
+ cluster.routing.allocation.balance.shard: 0.10 
+
+ node.name: node-c-sp1
+
+ node.master: false
+
+ node.data: false
+
+ path.data: /mnt/data2,/mnt/data3,/mnt/data4,/mnt/data5,/mnt/data6,/mnt/data7,/mnt/data8,/mnt/data9,/mnt/data10
+
+ network.host: 0.0.0.0
+
+ discovery.zen.ping.unicast.hosts: [&quot;master-ip1&quot;,&quot;master-ip2&quot;,&quot;master-ip3&quot;]
+
+ discovery.zen.minimum_master_nodes: 2
+
+ discovery.zen.ping_timeout: 100s
+
+ discovery.zen.fd.ping_timeout: 100s
+
+ discovery.zen.fd.ping_interval: 30s
+
+ gateway.expected_nodes: 8
+
+ gateway.recover_after_nodes: 5
+
+ thread_pool.bulk.queue_size: 2000
+
+ thread_pool.search.queue_size: 3000
+</code></pre>
+<pre><code>ubuntu@sp34:~/elasticsearch-5.5.2/bin$ cat elasticsearch | grep -v &#39;#&#39;
+
+JAVA_HOME=&quot;/home/ubuntu/jdk1.8.0_144&quot;
+
+ES_JAVA_OPTS=&quot;-Xms31g -Xmx31g&quot;
+</code></pre>
+<p>//==================</p>
+<h1 id="es-spark计算配置"><a href="#es-spark计算配置" class="headerlink" title="es spark计算配置"></a>es spark计算配置</h1><pre><code>ubuntu@sp26:~/apps/elasticsearch-5.5.2/bin$ cat elasticsearch | grep -v &#39;#&#39;
+
+JAVA_HOME=&quot;/home/ubuntu/apps/jdk1.8.0_144&quot;
+
+ES_JAVA_OPTS=&quot;-Xms31g -Xmx31g&quot;
+
+ES_HOME=/home/ubuntu/apps/elasticsearch-5.5.2
+</code></pre>
+<pre><code>ubuntu@sp26:~/apps/elasticsearch-5.5.2/config$ cat elasticsearch.yml | grep -v &#39;#&#39;
+
+cluster.name: log_big_data_wlk
+
+discovery.zen.ping.unicast.hosts: [&quot;es-master-ip1&quot;,&quot;es-master-ip2&quot;,&quot;es-master-ip3&quot;]
+
+discovery.zen.minimum_master_nodes: 2
+
+node.name: node-m-d-sp26
+
+path.data: /mnt/data2,/mnt/data3,/mnt/data4,/mnt/data5,/mnt/data6,/mnt/data7,/mnt/data8,/mnt/data9,/mnt/data10,/mnt/data11
+
+network.host: 0.0.0.0
+
+http.cors.enabled: true
+
+http.cors.allow-origin: &quot;*&quot;
+</code></pre>
+<p>//================================</p>
+<h2 id="当然还有es-header插件安装："><a href="#当然还有es-header插件安装：" class="headerlink" title="当然还有es header插件安装："></a>当然还有es header插件安装：</h2><h1 id="kibana安装："><a href="#kibana安装：" class="headerlink" title="kibana安装："></a>kibana安装：</h1><p>//======</p>
+<h1 id="es问题"><a href="#es问题" class="headerlink" title="es问题"></a>es问题</h1><p>1.es索引过多问题    linux定时脚本删除</p>
+<p>2.es索引创建异常，同一时间创建太多 ，那就是前边计算上传有问题了</p>
+<p>3.es的shell监控脚本 （这里是配合zabbix使用发送邮件）</p>
+<pre><code>#!/usr/bin/env bash
+#字符串截取参考 https://www.cnblogs.com/zwgblog/p/6031256.html
+#判断字符串包含参考 https://www.cnblogs.com/AndyStudy/p/6064834.html
+es_url=&#39;http://sp26:9200&#39;
+var=&#39;0&#39;
+
+#======判断集群健康值是否是green
+health_result=`curl -s $es_url/_cluster/health`
+#echo ddd$health_result
+if [[ $health_result == *&#39;&quot;status&quot;:&quot;green&quot;&#39;* ]]
+then
+#     echo &quot;包含&quot;
+     pass=&#39;yes&#39;
+else
+     echo &quot;不包含green&quot;
+fi
+#====获取上个小时的日志数量 参考是否达标
+last_hour=`date +%Y.%m.%d.%H  -d  &#39;-1 hours&#39;`
+#last_hour=&#39;2017.12.13.13&#39;
+last_hour_index=&#39;logstash-&#39;$last_hour
+result_query=`curl -s $&#123;es_url&#125;/$&#123;last_hour_index&#125;/_search -d &#39;&#123;&quot;query&quot;:&#123;&quot;bool&quot;:&#123;&quot;must&quot;:[&#123;&quot;match_all&quot;:&#123;&#125;&#125;]&#125;&#125;,&quot;size&quot;:0&#125;&#39;`
+#echo $result_query
+right_total=$&#123;result_query#*&#39;&quot;hits&quot;:&#123;&quot;total&quot;:&#39;&#125;
+hits_total=$&#123;right_total%&#39;,&quot;max_score&quot;&#39;*&#125;
+#echo $hits_total
+if [ $hits_total  -lt 1000000 ]
+then
+    echo &#39;数据量&lt;1000000&#39;
+fi
+echo $var
+</code></pre>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2018/12/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F-logstash/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="大数据日志分析系统-logstash" class="lazyload">
+                    <h1>大数据日志分析系统-logstash</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月18日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.1k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
+        </div>
+
+        <article>
+            
+                <h1 id="logstash简介"><a href="#logstash简介" class="headerlink" title="logstash简介"></a>logstash简介</h1><p>Logstash 是一个开源的数据收集引擎，它具有备实时数据传输能力。它可以统一过滤来自不同源的数据，并按照开发者的制定的规范输出到目的地。</p>
+<h1 id="logstash-2-2-2的配置："><a href="#logstash-2-2-2的配置：" class="headerlink" title="logstash-2.2.2的配置："></a>logstash-2.2.2的配置：</h1><h2 id="从logstash-forward-到kafka的配置"><a href="#从logstash-forward-到kafka的配置" class="headerlink" title="从logstash-forward 到kafka的配置"></a>从logstash-forward 到kafka的配置</h2><pre><code>ubuntu@sp1:~/logstashBeforeChangeConf$ cat /home/ubuntu/logstash-2.2.2/config/before-kafka-access.conf
+
+
+input &#123;
+      lumberjack &#123;
+                    port =&gt; &quot;5044&quot;
+                    ssl_certificate =&gt; &quot;/home/ubuntu/logstash-2.2.2/config/lumberjack.crt&quot;
+                    ssl_key =&gt;  &quot;/home/ubuntu/logstash-2.2.2/config/lumberjack.key&quot;
+                    type =&gt; &quot;fc_access&quot;
+                  &#125;
+      &#125;
+
+output &#123;
+       if &quot;_grokparsefailure&quot; not in [tags] &#123;
+    #       stdout &#123; codec =&gt; rubydebug &#125;
+       kafka &#123;
+                topic_id =&gt; &quot;kafka_es&quot;
+                bootstrap_servers =&gt; &quot;sp1:9092,sp2:9092,sp3:9092,sp4:9092,sp5:9092,sp6:9092,sp7:9092&quot;
+                compression_type =&gt; &quot;snappy&quot; 
+                acks =&gt; [&quot;1&quot;]
+                value_serializer =&gt; &quot;org.apache.kafka.common.serialization.StringSerializer&quot;
+                timeout_ms =&gt; 10000
+                retries =&gt; 5
+                retry_backoff_ms =&gt; 100
+                send_buffer_bytes =&gt; 102400   
+                workers =&gt; 2
+             &#125;
+      &#125;
+&#125;
+</code></pre>
+<h2 id="从kafka到es配置"><a href="#从kafka到es配置" class="headerlink" title="从kafka到es配置"></a>从kafka到es配置</h2><p>其中包括了对日志各个字段的解析,以及对异常日志过滤（同时注意其中过滤了 不属于当前时间前后5天的时间的日志，为了防止异常日志创建索引过多导致es报红）</p>
+<pre><code>ubuntu@sp1:~/logstashAfterChangeConf$ cat /home/ubuntu/logstash-2.2.2/config/after-kafa-access.conf
+
+input &#123;
+      kafka &#123;
+        topic_id =&gt; &quot;kafka_es&quot;
+        group_id =&gt; &quot;kafka_es&quot;
+        zk_connect =&gt; &quot;sp1:2181,sp2:2181,sp3:2181,sp4:2181,sp5:2181,sp6:2181,sp7:2181&quot; 
+        consumer_threads =&gt; 1
+        consumer_restart_on_error =&gt; true
+        consumer_restart_sleep_ms =&gt; 5000
+        decorate_events =&gt; true
+        consumer_timeout_ms =&gt; 1000
+        queue_size =&gt; 100
+        auto_offset_reset =&gt; &quot;smallest&quot;
+        rebalance_max_retries =&gt; 50
+      &#125;
+&#125;
+
+filter &#123;
+       mutate &#123;
+             add_field =&gt; [ &quot;messageClone&quot;, &quot;%&#123;message&#125;&quot; ]
+       &#125;
+
+       mutate &#123;
+             split =&gt; &#123; &quot;messageClone&quot; =&gt; &#39;&quot;&#39; &#125;
+            add_field =&gt; &#123;&quot;agent&quot; =&gt; &quot;%&#123;[messageClone][3]&#125;&quot;&#125;
+
+       &#125;
+       useragent &#123; 
+              source =&gt; &quot;agent&quot; 
+       &#125;
+
+       mutate &#123;
+            split =&gt; &#123; &quot;message&quot; =&gt; &quot; &quot; &#125;
+            add_field =&gt; &#123;&quot;timestamp&quot; =&gt; &quot;%&#123;[message][0]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;reqtime&quot; =&gt; &quot;%&#123;[message][1]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;clientIP&quot; =&gt; &quot;%&#123;[message][2]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;squidCache&quot; =&gt; &quot;%&#123;[message][3]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;repsize&quot; =&gt; &quot;%&#123;[message][4]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;reqMethod&quot; =&gt; &quot;%&#123;[message][5]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;requestURL&quot; =&gt; &quot;%&#123;[message][6]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;username&quot; =&gt; &quot;%&#123;[message][7]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;requestOriginSite&quot; =&gt; &quot;%&#123;[message][8]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;mime&quot; =&gt; &quot;%&#123;[message][9]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;referer&quot; =&gt; &quot;%&#123;[message][10]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;agentCheck&quot; =&gt; &quot;%&#123;[message][11]&#125;&quot;&#125;
+            add_field =&gt; &#123;&quot;dnsGroup&quot; =&gt; &quot;%&#123;[message][-1]&#125;&quot;&#125;
+            remove_field =&gt; [&quot;offset&quot;, &quot;kafka&quot;, &quot;@version&quot;, &quot;file&quot;, &quot;message&quot;, &quot;messageClone&quot;]
+
+       &#125;
+
+
+
+       if [agentCheck] =~ &quot;ChinaCache&quot; &#123;
+
+         grok &#123; match =&gt; &#123; &quot;agentCheck&quot; =&gt; &quot;OOPS&quot; &#125; &#125;
+
+       &#125;
+
+
+
+       mutate &#123;
+
+          convert =&gt; &#123;
+
+                &quot;timestamp&quot; =&gt; &quot;float&quot;       
+
+            &quot;reqtime&quot; =&gt; &quot;integer&quot;
+
+          &quot;repsize&quot; =&gt; &quot;integer&quot;
+
+          &#125;
+
+      remove_field =&gt; [&quot;agentCheck&quot;]
+
+       &#125;
+
+
+
+
+
+       ruby &#123;
+
+       code =&gt; &quot;event[&#39;timestamp_str&#39;] = Time.at(event[&#39;timestamp&#39;]).strftime(&#39;%Y-%m-%dT%H:%M:%S.%LZ&#39;)&quot;
+
+       &#125;
+
+
+
+       date &#123; match =&gt; [ &quot;timestamp_str&quot;, &quot;ISO8601&quot; ] 
+
+       &#125;
+
+
+
+       mutate &#123;
+
+             split =&gt; &#123; &quot;requestURL&quot; =&gt; &#39;/&#39; &#125;
+
+      add_field =&gt; &#123;&quot;uriHost&quot; =&gt; &quot;%&#123;[requestURL][2]&#125;&quot;&#125;
+
+      remove_field =&gt; [&quot;timestamp_str&quot;]
+
+       &#125;
+
+
+
+       mutate &#123;
+
+             join =&gt; &#123; &quot;requestURL&quot; =&gt; &#39;/&#39; &#125;
+
+       &#125;
+
+
+
+       ruby &#123;
+
+              code =&gt; &quot;event.cancel if 5 * 24 * 3600 &lt; (event[&#39;@timestamp&#39;]-::Time.now).abs&quot;
+
+       &#125;
+
+
+
+
+
+&#125;
+
+
+
+output &#123;
+
+if &quot;ChinaCache&quot; not in [agent] &#123;
+
+#                   stdout &#123; codec =&gt; &quot;rubydebug&quot; &#125;
+
+                   elasticsearch &#123;
+
+                         index =&gt; &quot;logstash-%&#123;+YYYY.MM.dd.HH&#125;&quot;
+
+                         workers =&gt; 1
+
+                         flush_size =&gt; 5000
+
+                         idle_flush_time =&gt; 1
+
+                         hosts =&gt; [&quot;es-ip-1:9200&quot;,&quot;es-ip-2:9200&quot;,&quot;es-ip-3:9200&quot;,&quot;es-ip-4:9200&quot;,&quot;es-ip-5:9200&quot;,&quot;es-ip-6:9200&quot;,&quot;es-ip-7:9200&quot;]
+
+
+
+                         &#125;
+
+        &#125;
+
+&#125;
+</code></pre>
+<h1 id="启动命令："><a href="#启动命令：" class="headerlink" title="启动命令："></a>启动命令：</h1><pre><code>nohup /home/ubuntu/logstash-2.2.2/bin/logstash -f /home/ubuntu/logstash-2.2.2/config/after-kafa-access.conf 2&gt;&amp;1 &gt; /home/ubuntu/logstash-2.2.2/logs/logstash-after-kafka-access.log &amp;
+</code></pre>
+<pre><code>nohup /home/ubuntu/logstash-2.2.2/bin/logstash -f /home/ubuntu/logstash-2.2.2/config/before-kafka-access.conf 2&gt;&amp;1 &gt; /home/ubuntu/logstash-2.2.2/logs/logstash-before-kafka.log &amp;
+</code></pre>
+<h1 id="logstash-6-1-1配置"><a href="#logstash-6-1-1配置" class="headerlink" title="logstash-6.1.1配置"></a>logstash-6.1.1配置</h1><p>##从filbeat到kafka的配置</p>
+<pre><code>ubuntu@sp26:~/apps/logstash-6.1.1$ cat filebeat5055-kafkasp26-3.conf
+
+
+
+input &#123;
+
+    beats &#123;
+
+        port =&gt; &quot;5055&quot;
+
+type =&gt; &quot;log&quot;
+
+    &#125;
+
+&#125;
+
+output &#123;
+
+#   stdout &#123; codec =&gt; rubydebug &#125;
+
+  kafka &#123;
+
+    codec =&gt; &quot;json&quot;
+
+    bootstrap_servers =&gt; &quot;37:9092,38:9092,39:9092,40:9092,41:9092&quot;
+
+    topic_id =&gt; &quot;test&quot;
+
+compression_type =&gt; &quot;snappy&quot;
+
+value_serializer =&gt; &quot;org.apache.kafka.common.serialization.StringSerializer&quot;
+
+  &#125;
+
+&#125;
+</code></pre>
+<p>#检测</p>
+<pre><code>/home/ubuntu/apps/logstash-6.1.1/bin/logstash -f /home/ubuntu/apps/logstash-6.1.1/filebeat5055-kafkasp26-3.conf  --config.test_and_exit
+</code></pre>
+<p>#启动</p>
+<p><code>nohup /home/ubuntu/apps/logstash-6.1.1/bin/logstash -f /home/ubuntu/apps/logstash-6.1.1/filebeat5055-kafkasp26-3.conf --config.reload.automatic   2&gt;&amp;1 &gt;  /home/ubuntu/apps/logstash-6.1.1/logs/filebeat5055-kafkasp26-3.log  &amp;</code>　</p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2018/12/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F-%E7%BC%93%E5%AD%98%E7%BB%84%E4%BB%B6kafka/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="大数据日志分析系统-缓存组件kafka" class="lazyload">
+                    <h1>大数据日志分析系统-缓存组件kafka</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月18日</a>
+            <a><i class="nexmoefont icon-areachart"></i>770 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+        </div>
+
+        <article>
+            
+                <h1 id="kafka简介"><a href="#kafka简介" class="headerlink" title="kafka简介"></a>kafka简介</h1><p>是一种高吞吐量的分布式发布订阅消息系统，当数据量不稳定，数据量大的时候想到它就对了。</p>
+<h1 id="zookeeper简介"><a href="#zookeeper简介" class="headerlink" title="zookeeper简介"></a>zookeeper简介</h1><p>是一个分布式的，开放源码的分布式应用程序协调服务,很多地方用到, 最常见的是为集群提供基础的、高可用HA(High Availability)服务<br>是kafka集群的基础依赖，同时也是hadoop系列中实现HA的基础组件。<br>实现HDFS的NamaNode和YARN的ResourceManager的HA,Spark实现HA，<br>HBase主要用ZooKeeper来实现HMaster选举与主备切换、系统容错、RootRegion管理、Region状态管理和分布式SplitWAL任务管理等。</p>
+<p>//===========================================================</p>
+<p>两种集群的配置相差不大</p>
+<h1 id="zookeeper集群配置："><a href="#zookeeper集群配置：" class="headerlink" title="zookeeper集群配置："></a>zookeeper集群配置：</h1><pre><code>ubuntu@sp1:~/kafka/config$ cat zookeeper.properties | grep -v &#39;#&#39;
+dataDir=/mnt/data3/zk
+clientPort=2181
+tickTime=2000
+initLimit=7
+syncLimit=4
+server.1=sp1:2888:3888
+server.2=sp2:2888:3888
+server.3=sp3:2888:3888
+server.4=sp4:2888:3888
+server.5=sp5:2888:3888
+server.6=sp6:2888:3888
+server.7=sp7:2888:3888
+</code></pre>
+<h2 id="强制杀死命令"><a href="#强制杀死命令" class="headerlink" title="强制杀死命令"></a>强制杀死命令</h2><p>ps aux |grep kafka |grep -v grep|cut -c 9-15 | xargs kill -9<br>ps aux |grep zookeeper |grep -v grep|cut -c 9-15 | xargs kill -9</p>
+<h1 id="kafka-集群配置："><a href="#kafka-集群配置：" class="headerlink" title="kafka 集群配置："></a>kafka 集群配置：</h1><pre><code>ubuntu@sp1:~/kafka/config$ cat consumer.properties | grep -v &#39;#&#39;
+zookeeper.connect=es1:2181,es2:2181,es3:2181,es4:2181,es5:2181
+zookeeper.connection.timeout.ms=6000
+group.id=test-consumer-group
+</code></pre>
+<pre><code>ubuntu@sp1:~/kafka/config$ cat server.properties | grep -v &#39;#&#39;
+broker.id=1
+port=9092
+advertised.host.name=sp1
+listeners=PLAINTEXT://sp1-host-ip:9092  
+num.network.threads=10
+num.io.threads=8
+socket.send.buffer.bytes=102400
+socket.receive.buffer.bytes=102400
+socket.request.max.bytes=104857600
+log.dirs=/mnt/data3/kafka-logs
+num.partitions=20
+num.recovery.threads.per.data.dir=5
+log.retention.hours=8
+log.retention.bytes=53687091200
+log.segment.bytes=1073741824
+log.retention.check.interval.ms=300000
+log.cleaner.enable=false
+zookeeper.connect=sp1:2181,sp2:2181,sp3:2181,sp4:2181,sp5:2181,sp6:2181,sp7:2181
+zookeeper.connection.timeout.ms=6000
+delete.topic.enable=true
+auto.leader.rebalance.enable=true
+num.replica.fetchers=5
+</code></pre>
+<h1 id="启动命令："><a href="#启动命令：" class="headerlink" title="启动命令："></a>启动命令：</h1><h2 id="1-zookeeper启动"><a href="#1-zookeeper启动" class="headerlink" title="1.zookeeper启动"></a>1.zookeeper启动</h2><p>sp1 - sp7在Ubuntu用户下 执行</p>
+<pre><code>/home/ubuntu/zookeeper-3.4.7/bin/zkServer.sh start
+</code></pre>
+<h2 id="jps检查存在"><a href="#jps检查存在" class="headerlink" title="jps检查存在"></a>jps检查存在</h2><p>QuorumPeerMain</p>
+<h2 id="状态查看"><a href="#状态查看" class="headerlink" title="状态查看"></a>状态查看</h2><pre><code>/home/ubuntu/zookeeper-3.4.7/bin/zkServer.sh status
+</code></pre>
+<p>查看为一主动多从启动正常</p>
+<h2 id="文件查看"><a href="#文件查看" class="headerlink" title="文件查看"></a>文件查看</h2><pre><code>/home/ubuntu/zookeeper-3.4.7/bin/zkCli.sh -server localhost:2181
+</code></pre>
+<p>进入客户端 ls / 等命令查看</p>
+<h1 id="2-kafka启动"><a href="#2-kafka启动" class="headerlink" title="2.kafka启动"></a>2.kafka启动</h1><h2 id="sp1到sp7执行"><a href="#sp1到sp7执行" class="headerlink" title="sp1到sp7执行"></a>sp1到sp7执行</h2><pre><code>nohup /home/ubuntu/kafka/bin/kafka-server-start.sh /home/ubuntu/kafka/config/server.properties 2&gt;&amp;1 &gt; /home/ubuntu/kafka/logs/kafka.log &amp;
+</code></pre>
+<p>当然也可以这样远程执行</p>
+<pre><code>ssh sp1 nohup /home/ubuntu/kafka/bin/kafka-server-start.sh /home/ubuntu/kafka/config/server.properties 2&gt;&amp;1 &gt; /home/ubuntu/kafka/logs/kafka.log &amp;
+</code></pre>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><p>~/kafka/bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker –broker-info –group kafka_es –topic kafka_es –zookeeper localhost:2181</p>
+<p>就可以看机器是否正常了</p>
+<h1 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h1><p>很可能出现kafka个别分片堆积问题：例如现在kafka有35个分片，只有2个分片产生堆积，通过命令</p>
+<pre><code>~/kafka/bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --broker-info --group kafka_es --topic kafka_es --zookeeper localhost:2181
+</code></pre>
+<p>查看，我遇见过是消费线程小于分片数量（现象是用命令查看是不同的分片Pid 拥有相同的 Owner），这个时候增加消费者进程即可（我个人认为数据量大时消费者要多于分片数量  这样不容易出现挂掉一两个消费者出现分片被堆积的情况）
+　</p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2018/12/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F-%E8%BE%B9%E7%BC%98%E8%8A%82%E7%82%B9%E6%97%A5%E5%BF%97%E4%B8%8A%E4%BC%A0-flume%EF%BC%8Cfilbeat-logstash-forward/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="大数据日志分析系统边缘节点日志上传-flume，filbeat,logstash-forward" class="lazyload">
+                    <h1>大数据日志分析系统边缘节点日志上传-flume，filbeat,logstash-forward</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月18日</a>
+            <a><i class="nexmoefont icon-areachart"></i>301 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+        </div>
+
+        <article>
+            
+                <h1 id="上传组件简介："><a href="#上传组件简介：" class="headerlink" title="上传组件简介："></a>上传组件简介：</h1><p>它们都是很好的资源上传工具，直接指定目录、文件就可以上传，通用功能不多说，区别除了与本公司产品兼容性好以外：</p>
+<ul>
+<li>filebeat elastic(ELK)官网推荐：占用资源少</li>
+<li>flume    apache官网产品：可定制性强</li>
+<li>logstash-forward  已经过期的产品不多说。</li>
+</ul>
+<p>因为需求简单，只是边缘节点日志上传最终选用了filebeat </p>
+<p> #正确格式原始日志示例：</p>
+<pre><code>1512231002.276     89 117.169.22.89 TCP_REFRESH_HIT/304 199 GET http://www.baidu.com/download/EF_patch_1.0.3.2-1.0.3.3.exe  - DIRECT/122.228.246.78 - &quot;-&quot; &quot;Mozilla/5.0 Gecko/20100115 Firefox/3.6&quot; &quot;-&quot;
+</code></pre>
+<p> #测试时追加日志的shell</p>
+<pre><code>echo &#39;1512231002.276     89 117.169.22.89 TCP_REFRESH_HIT/304 199 GET http://www.baidu.com/download/EF_patch_1.0.3.2-1.0.3.3.exe  - DIRECT/122.228.246.78 - &quot;-&quot; &quot;Mozilla/5.0 Gecko/20100115 Firefox/3.6&quot; &quot;-&quot;&#39;  &gt;&gt;  /data/cache1/filbeat_conf/logsdir/test.log
+</code></pre>
+<p> #filbeat配置示例：</p>
+<pre><code>[root@filbeathost filbeat_conf]# cat /data/cache1/filbeat_conf/filebeat-file-sp265055.yml
+filebeat.prospectors:
+- type: log
+ paths:
+   - /data/cache1/filbeat_conf/logsdir/* 
+output.logstash:
+ hosts: [&quot;logstash-host1:5055&quot;,&quot;logstash-host2:5055&quot;,&quot;logstash-host3:5055&quot;,&quot;logstash-host4:5055&quot;,&quot;logstash-host5:5055&quot;]
+</code></pre>
+<p>#启动</p>
+<pre><code>nohup filebeat -e -c /data/cache1/filbeat_conf/filebeat-file-sp265055.yml  -d &quot;publish&quot; &amp;
+</code></pre>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2018/12/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="大数据日志分析系统" class="lazyload">
+                    <h1>大数据日志分析系统</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月18日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.9k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
+        </div>
+
+        <article>
+            
+                <h1 id="原始日志量"><a href="#原始日志量" class="headerlink" title="原始日志量"></a>原始日志量</h1><p>每小时高的是否达到了 45303452条日志（四千五百多万条原始日志） ，某天日志量（这个随便选的）422110779 条（4亿两千多万）</p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ul>
+<li>1）对原始日志按域名进行分析包括： 请求数分析、独立IP分析、PV分析、地区分布运营商分布分析（根据ip计算）、浏览器操作系统分布分析（根据原始日志的agent进行分析）、热点页面分析、文件类型分析</li>
+<li>2）原始日志按域名、按天、按小时进行打包。</li>
+</ul>
+<h1 id="两种方案"><a href="#两种方案" class="headerlink" title="两种方案"></a>两种方案</h1><h1 id="方案１"><a href="#方案１" class="headerlink" title="方案１"></a>方案１</h1><ul>
+<li>→logstash-forward(边缘设备)  </li>
+<li>→ logstash (用logstast-before配置文件) </li>
+<li>→ Kafka (同时依赖zookeeper) </li>
+<li>→ logstash (用logstash-after配置文件) </li>
+<li>→ elaticsearch  </li>
+<li>→ python脚本 </li>
+<li>→ 统计日志本地然后上传到hadoop,各种统计结果到elasticsearch（nginx负载均衡）   </li>
+<li>→  界面展示</li>
+</ul>
+<p>边缘节点服务器会产生很多用户请求日志，要对日志进行各种分析和原始日志打包，最终分析结果进行收费、让客户可以获取请求日志各种分析结果、为客户进行原始日志按域名按天按小时分割打包。</p>
+<h1 id="方案２"><a href="#方案２" class="headerlink" title="方案２"></a>方案２</h1><ul>
+<li>–&gt; filebeat(或flume) </li>
+<li>–&gt; logstash </li>
+<li>–&gt; kafka(kafka依赖zookeeper) </li>
+<li>–&gt; spark统计计算 </li>
+<li>–&gt; 统计各种结果到elasticsearch（nginx负载均衡） </li>
+<li>–&gt; 界面展示</li>
+</ul>
+<p>–&gt; flume(自定义sink插件、验证可行待完成)<br>–&gt; 原始日志本地打包<br>–&gt; 原始日志hadoop上传 (当然这里也可以用hbase进行日志存储)</p>
+<h1 id="大数据实时计算需要的几个基本组件（一定要注意版本问题，java大数据机器间通信用的是RPC-而不是restful-api-如果版本不对应很可能出现版本间的兼容问题）："><a href="#大数据实时计算需要的几个基本组件（一定要注意版本问题，java大数据机器间通信用的是RPC-而不是restful-api-如果版本不对应很可能出现版本间的兼容问题）：" class="headerlink" title="大数据实时计算需要的几个基本组件（一定要注意版本问题，java大数据机器间通信用的是RPC 而不是restful_api,如果版本不对应很可能出现版本间的兼容问题）："></a>大数据实时计算需要的几个基本组件（一定要注意版本问题，java大数据机器间通信用的是RPC 而不是restful_api,如果版本不对应很可能出现版本间的兼容问题）：</h1><ul>
+<li><p>1.日志收集    -从CDN边缘节点服务器进行日志收集</p>
+</li>
+<li><p>2.日志缓存    -收集上来的日志存储到一个缓存设备</p>
+</li>
+<li><p>3.数据计算    -对收集的日志进行计算，域名请求数分析、地区统计等等</p>
+</li>
+<li><p>4.计算结果存储    -对各种分析结果进行存储，要方便查找</p>
+</li>
+<li><p>5.日志打包结果存储</p>
+<h2 id="公司刚开始的日志系统分布："><a href="#公司刚开始的日志系统分布：" class="headerlink" title="公司刚开始的日志系统分布："></a>公司刚开始的日志系统分布：</h2></li>
+<li><p>logstash-forward (边缘节点日志收集，上传到有logstash的机器)       -》</p>
+</li>
+<li><p>kafka  强大的数据缓存组建          （由logstash收集日志到kafka）    -》</p>
+</li>
+<li><p>elasticsearch (分布式、可扩展、实时的搜索与数据分析引擎)  (用logstash从kafka取出数据存到es)  -&gt;</p>
+</li>
+<li><p>spark（大规模数据计算引擎，从es取出原始日志然后通过spark计算结果）    -》</p>
+</li>
+<li><p>elasticsearch （进行计算结果数据存储），hadoop（原始日志打包存储） -》</p>
+</li>
+<li><p>nginx  + django服务  进行反向代理、负载均衡、地址隐藏            django进行界面展示-》</p>
+</li>
+<li><p>可客户直接访问观看</p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>zookeeper 3.4.7<br>kafka_2.11-0.8.2.1<br>logstash-2.2.2<br>elasticsearch-2.4.6<br>hadoop-2.6.4<br>spark-1.6.1 </p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>现在这样的系统由于经常出现问题，es报红，或者计算有问题等，这是由于刚开始一个人做完还没完全稳定就直接撤人了，转了几次到了我手里（因为我懂java，android但是部门基本上是以python为主）。到我手里了是个挑战也是一个机遇嘛，然后就开始了填坑之旅。。。。。。。。。。。。<br>还有一点是这样不能够很好的保持数据的实时性。　</p>
+<h2 id="改进："><a href="#改进：" class="headerlink" title="改进："></a>改进：</h2><p>其中遇到也解决了各种问题，就举例最主要的两个。<br>    1.线上的客户投诉获取不到原始日志，没那么多时间弄懂了再改进所以解决是 –》 写python脚本（到了这家公司开始用与部门统一的python）—》功能是从elasticsearch获取到某个域名原始日志然后写入本地文件（虽然不会写，但是这么多年编程scala的大概对日志的处理逻辑还是能看懂的），本地压缩，然后python调用hadoop本地命令行将日志上传到hadoop，先临时解决了问题<br>    2.elasticsearch报红、kafka堆积<br>    不知道怎样解决，只能看日志了，尝试用elasticsearch升级到了5.5.2，发现不会出现这样的问题。  但是又出现了新的问题：spark不能兼容这样的es版本，  给老大反映情况（提了 我倾向的用python脚本计算这一条路和对es降级尝试的路），听命于领导就先对原来的elasticsearch-2.4.6进行了配置改动-但是发现还是偶尔会出现es报红的情况。    只能用另一条路用python脚本代替spark，使用es自身的聚合功能进行计算，这样就解决了问题。<br>    总结：所以最后的解决办法是 去掉spark        先用python脚本直接聚合统计方式请求es获取结果,这样也满足线上要求，就先这样了。</p>
+<h1 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h1></li>
+<li><p>logstash-forward (边缘节点日志收集，上传到有logstash的机器)       -》</p>
+</li>
+<li><p>kafka  强大的数据缓存组建          （由logstash收集日志到kafka）    -》</p>
+</li>
+<li><p>elasticsearch (分布式、可扩展、实时的搜索与数据分析引擎)  (用logstash从kafka取出数据存到es)  -&gt;</p>
+</li>
+<li><p>python脚本（调用elasticsearch的resultful_api获取统计结果，同时打包原始日志到本地上传到hadoop）    -》</p>
+</li>
+<li><p>elasticsearch （进行计算结果数据存储），hadoop（原始日志打包存储） -》</p>
+</li>
+<li><p>nginx  + django服务  进行反向代理、负载均衡、地址隐藏            django进行界面展示-》</p>
+</li>
+<li><p>客户直接访问观看</p>
+<h2 id="版本-1"><a href="#版本-1" class="headerlink" title="版本"></a>版本</h2><p>zookeeper 3.4.7       <br>kafka_2.11-0.8.2.1   <br>logstash-2.2.2    <br>elasticsearch-5.5.2      <br>hadoop-2.6.4   <br>python以及python elasticsearch库 </p>
+<h2 id="现在的架构："><a href="#现在的架构：" class="headerlink" title="现在的架构："></a>现在的架构：</h2><p>公司在我刚开始接手的同时已经公司招聘了一个大数据人员（但不是本部门的），本部门也要有新项目有更大的数据量要计算需要跟他对接，但是等了好几个月仍然没有啥成果，老大忍不住了让我去看看他的大数据代码、提改进建议催进度（他主要用spark最终结果存到hbase，java写的代码），然后发现代码写的比较烂（因为java基本的静态变量 方法封装 继承多态等一看就是新手），业务逻辑也有点问题-跟老大反映，但是不同部门管不着也不能说啊，细节不说了，最终又开始了新架构的尝试之旅。</p>
+</li>
+<li><p>1.filbeat 边缘节点日志收集，上传到有logstash的机器（或者可以用flume)    -》</p>
+</li>
+<li><p>2.kafka  强大的数据缓存组件         （由logstash收集日志到kafka）    -》</p>
+</li>
+<li><p>3.spark（大规模数据计算引擎，从kafka取出日志，通过scala编写的spark代码把计算结果存入es）    -》</p>
+</li>
+<li><p>4.elasticsearch （进行计算结果数据存储） -》 </p>
+</li>
+<li><p>5.nginx + django   界面展示或接口让客户获取服务</p>
+</li>
+</ul>
+<p> 同时并行的原始日志打包   （刚开始日志打包考虑到了用spark或者flume直接上传到hadoop，但是后来发现现有机器这样的速度赶不上实际需要，）</p>
+<ul>
+<li>3.flume(自定义sink插件，filter插件 从kafka的另一个topic中获取日志数据，把日志按域名，按小时打包到本地）     -》</li>
+<li>4.python 调用hadoop命令行上传本地打包好的日志到hadoop -&gt;</li>
+<li>5.nginx + django   界面展示或接口让客户获取服务</li>
+</ul>
+<h2 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h2><p>apache-flume-1.6.0-bin  hadoop-2.6.4   kafka_2.11-1.0.0  spark-1.6.1-bin-hadoop2.6<br>elasticsearch-5.5.2     hbase         jdk1.8.0_144  logstash-6.1.1    zookeeper-3.4.5<br>jdk1.7.0_45(刚开始hadoop使用 后来spark要求更高就用了1.8版本） </p>
+<h2 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h2><p>当然每个阶段都需要增加监控，这里用的是zabbix监控配合脚本监控</p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2018/12/18/rocketMQ%E5%90%AF%E5%8A%A8/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="rocketMQ启动" class="lazyload">
+                    <h1>rocketMQ启动</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月18日</a>
+            <a><i class="nexmoefont icon-areachart"></i>187 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+        </div>
+
+        <article>
+            
+                <h1 id="下载构建"><a href="#下载构建" class="headerlink" title="下载构建"></a>下载构建</h1><pre><code>  &gt; unzip rocketmq-all-4.3.2-source-release.zip
+  &gt; cd rocketmq-all-4.3.2/
+  &gt; mvn -Prelease-all -DskipTests clean install -U
+  &gt; cd distribution/target/apache-rocketmq
+</code></pre>
+<h1 id="Start-Name-Server"><a href="#Start-Name-Server" class="headerlink" title="Start Name Server"></a>Start Name Server</h1><pre><code>  &gt; nohup sh bin/mqnamesrv &amp; tail -f ~/logs/rocketmqlogs/namesrv.log
+  The Name Server boot success...
+</code></pre>
+<h1 id="Start-Broker"><a href="#Start-Broker" class="headerlink" title="Start Broker"></a>Start Broker</h1><pre><code>&gt; nohup sh bin/mqbroker -n localhost:9876 &amp; tail -f ~/logs/rocketmqlogs/broker.log 
+The broker[%s, 172.30.30.233:10911] boot success...
+</code></pre>
+<h1 id="Send-amp-Receive-Messages"><a href="#Send-amp-Receive-Messages" class="headerlink" title="Send &amp; Receive Messages"></a>Send &amp; Receive Messages</h1><p>  Before sending/receiving messages, we need to tell clients the location of name servers. RocketMQ provides multiple ways to achieve this. For simplicity, we use environment variable NAMESRV_ADDR</p>
+<pre><code> &gt; export NAMESRV_ADDR=localhost:9876
+ &gt; sh bin/tools.sh org.apache.rocketmq.example.quickstart.Producer
+ SendResult [sendStatus=SEND_OK, msgId= ...
+
+ &gt; sh bin/tools.sh org.apache.rocketmq.example.quickstart.Consumer
+ ConsumeMessageThread_%d Receive New Messages: [MessageExt...
+</code></pre>
+<h1 id="Shutdown-Servers"><a href="#Shutdown-Servers" class="headerlink" title="Shutdown Servers"></a>Shutdown Servers</h1><pre><code>&gt; sh bin/mqshutdown broker
+The mqbroker(36695) is running...
+Send shutdown request to mqbroker(36695) OK
+
+&gt; sh bin/mqshutdown namesrv
+The mqnamesrv(36664) is running...
+Send shutdown request to mqnamesrv(36664) OK
+</code></pre>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2018/12/17/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%88CSRF-XSRF%EF%BC%89/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="跨站请求伪造（CSRF/XSRF）" class="lazyload">
+                    <h1>跨站请求伪造（CSRF/XSRF）</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月17日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+        </div>
+
+        <article>
+            
+                <p>#CSRF</p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2018/12/12/linux%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="linux基础之文件目录权限" class="lazyload">
+                    <h1>linux基础之文件目录权限</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月12日</a>
+            <a><i class="nexmoefont icon-areachart"></i>4 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+        </div>
+
+        <article>
+            
+                <h2 id="权限概述"><a href="#权限概述" class="headerlink" title="权限概述"></a>权限概述</h2>
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2018/12/12/java%E5%9F%BA%E7%A1%80%E4%B9%8BNIO/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="java基础之NIO" class="lazyload">
+                    <h1>java基础之NIO</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月12日</a>
+            <a><i class="nexmoefont icon-areachart"></i>6 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+        </div>
+
+        <article>
+            
+                <h2 id="BIO-NIO-AIO-的概念"><a href="#BIO-NIO-AIO-的概念" class="headerlink" title="BIO NIO AIO 的概念"></a>BIO NIO AIO 的概念</h2>
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2018/12/10/Mysql%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Mysql主从配置，实现读写分离" class="lazyload">
+                    <h1>Mysql主从配置，实现读写分离</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月10日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.4k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
+        </div>
+
+        <article>
+            
+                <p>大型网站为了软解大量的并发访问，除了在网站实现分布式负载均衡，远远不够。到了数据业务层、数据访问层，如果还是传统的数据结构，或者只是单单靠一台服务器扛，如此多的数据库连接操作，数据库必然会崩溃，数据丢失的话，后果更是 不堪设想。这时候，我们会考虑如何减少数据库的联接，一方面采用优秀的代码框架，进行代码的优化，采用优秀的数据缓存技术如：memcached,如果资金丰厚的话，必然会想到假设服务器群，来分担主数据库的压力。</p>
+<p>Ok切入今天微博主题，利用MySQL主从配置，实现读写分离，减轻数据库压力。这种方式，在如今很多网站里都有使用，也不是什么新鲜事情，今天总结一下，方便大家学习参考一下。</p>
+<p><strong>概述</strong>：搭设一台Master服务器（win8.1系统，Ip：192.168.0.104），搭设两台Slave服务器（虚拟机——一台Ubuntu，一台 Windows Server 2003）</p>
+<p><strong>原理</strong>：主服务器（Master）负责网站NonQuery操作，从服务器负责Query操作，用户可以根据网站功能模特性块固定访问Slave服务器，或者自己写个池或队列，自由为请求分配从服务器连接。主从服务器利用MySQL的二进制日志文件，实现数据同步。二进制日志由主服务器产生，从服务器响应获取同步数据库。</p>
+<h2 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h2><p><strong>1、在主从服务器上都装上MySQL数据库</strong> </p>
+<p>windows系统鄙人安装的是mysql_5.5.25.msi版本，<br>Ubuntu安装的是mysql-5.6.22-linux-glibc2.5-i686.tar</p>
+<p>windows安装mysql就不谈了，一般地球人都应该会。鄙人稍微说一下Ubuntu的MySQL安装，我建议不要在线下载安装，还是离线安装的好。大家可以参考  <a target="_blank" rel="noopener" href="http://www.linuxidc.com/Linux/2013-01/78716.htm">http://www.linuxidc.com/Linux/2013-01/78716.htm</a> 这位不知道大哥还是姐妹，写的挺好按照这个就能装上。在安装的时候可能会出现几种现象，大家可以参考解决一下：</p>
+<p>（1）如果您不是使用root用户登录，建议 su - root 切换到Root用户安装，那就不用老是 sudo 了。</p>
+<p>（2）存放解压的mysql 文件夹，文件夹名字最好改成mysql</p>
+<p>（3）在./support-files/mysql.server start 启动MySQL的时候，可能会出现一个警告，中文意思是启动服务运行读文件时，忽略了my.cnf文件，那是因为my.cnf的文件权限有问题，mysql会认为该文件有危险不会执行。但是mysql还会启动成功，但如果下面配置从服务器参数修改my.cnf文件的时候，你会发现文件改过了，但是重启服务时，修改过后的配置没有执行，而且您 list一下mysql的文件夹下会发现很多.my.cnf.swp等中间文件。这都是因为MySQL启动时没有读取my.cnf的原因。这时只要将my.cnf的文件权限改成my_new.cnf的权限一样就Ok，命令：chmod 644 my.cnf就Ok</p>
+<p>（4）Ubuntu中修改文档内容没有Vim，最好把Vim 装上，apt-get install vim,不然估计会抓狂。</p>
+<p>这时候我相信MySQL应该安装上去了。</p>
+<p><strong>2、配置Master主服务器</strong> </p>
+<p>（1）在Master MySQL上创建一个用户‘repl’，并允许其他Slave服务器可以通过远程访问Master，通过该用户读取二进制日志，实现数据同步。</p>
+<pre><code>1 mysql&gt;create user repl; //创建新用户
+2 //repl用户必须具有REPLICATION SLAVE权限，除此之外没有必要添加不必要的权限，密码为mysql。说明一下192.168.0.%，这个配置是指明repl用户所在服务器，这里%是通配符，表示192.168.0.0-192.168.0.255的Server都可以以repl用户登陆主服务器。当然你也可以指定固定Ip。
+3 mysql&gt; GRANT REPLICATION SLAVE ON *.* TO &#39;repl&#39;@&#39;192.168.0.%&#39; IDENTIFIED BY &#39;mysql&#39;;
+</code></pre>
+<p>（2）找到MySQL安装文件夹修改my.Ini文件。mysql中有好几种日志方式，这不是今天的重点。我们只要启动二进制日志log-bin就ok。</p>
+<p> 在[mysqld]下面增加下面几行代码</p>
+<pre><code> server-id=1   //给数据库服务的唯一标识，一般为大家设置服务器Ip的末尾号
+ log-bin=master-bin
+ log-bin-index=master-bin.index
+</code></pre>
+<p>（3）查看日志</p>
+<pre><code>mysql&gt; SHOW MASTER STATUS;
++-------------------+----------+--------------+------------------+
+| File | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++-------------------+----------+--------------+------------------+
+| master-bin.000001 | 1285 | | |
++-------------------+----------+--------------+------------------+
+1 row in set (0.00 sec)
+
+重启MySQL服务
+</code></pre>
+<p><strong>3、 配置Slave从服务器（windows）</strong></p>
+<p>（1）找到MySQL安装文件夹修改my.ini文件，在[mysqld]下面增加下面几行代码<br> my.cnf 配置</p>
+<pre><code>[mysqld]
+server-id=2
+relay-log-index=slave-relay-bin.index
+relay-log=slave-relay-bin 
+</code></pre>
+<p>重启MySQL服务</p>
+<p>（2）连接Master</p>
+<pre><code>change master to master_host=&#39;192.168.0.104&#39;, //Master 服务器Ip
+master_port=3306,
+master_user=&#39;repl&#39;,
+master_password=&#39;mysql&#39;, 
+master_log_file=&#39;master-bin.000001&#39;,//Master服务器产生的日志
+master_log_pos=0;
+</code></pre>
+<p>（3）启动Slave</p>
+<pre><code>start slave;
+</code></pre>
+<p><strong>4、 Slave从服务器（Ubuntu）</strong></p>
+<p>（1）找到MySQL安装文件夹修改my.cnf文件,vim my.cnf</p>
+<p> <img data-fancybox="gallery" data-sizes="auto" data-src="http://alexoss1.oss-cn-beijing.aliyuncs.com/test/141118216966295.png" alt="图片" class="lazyload"></p>
+<p>（2） 重启</p>
+<pre><code>./support-files/myql.server restart 重启MySQL服务  ,  
+./bin/mysql 进入MySQL命令窗口 
+</code></pre>
+<p>（3）连接Master</p>
+<pre><code>change master to master_host=&#39;192.168.0.104&#39;, //Master 服务器Ip
+master_port=3306,
+master_user=&#39;repl&#39;,
+master_password=&#39;mysql&#39;, 
+master_log_file=&#39;master-bin.000001&#39;,//Master服务器产生的日志
+master_log_pos=0;
+</code></pre>
+<p>（4）启动Slave</p>
+<pre><code>start slave;
+</code></pre>
+<p>OK所有配置都完成了，这时候大家可以在Master Mysql 中进行测试了，因为我们监视的时Master mysql  所有操作日志，所以，你的任何改变主服务器数据库的操作，都会同步到从服务器上。创建个数据库，表试试吧。。。</p>
+
+            
+        </article>
+    </div>
+    
+</section>
+
+    <nav class="nexmoe-page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2018/"><i class="nexmoefont icon-left"></i></a><a class="page-number" href="/archives/2018/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2018/page/3/">3</a><a class="page-number" href="/archives/2018/page/4/">4</a><a class="extend next" rel="next" href="/archives/2018/page/3/"><i class="nexmoefont icon-right"></i></a>
+    </nav>
+  
+        <!--<div class="nexmoe-post-right">
+          <div class="nexmoe-fixed">
+            <div class="nexmoe-tool">
+              <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+            </div>
+          </div>
+        </div>-->
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1619942251094"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+  
+
+
+
+
+
+</body>
+
+</html>

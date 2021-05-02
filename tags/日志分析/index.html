@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN,en,default">
+
+<head>
+  
+  <title>标签：日志分析 - 最终幻想</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="一个程序员的心路。">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
+  <meta name="description" content="一个程序员的心路。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="最终幻想">
+<meta property="og:url" content="https://alexguo.net/tags/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="最终幻想">
+<meta property="og:description" content="一个程序员的心路。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Alex Guo">
+<meta property="article:tag" content="java web sql linux">
+<meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css?v=1619942251158">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Alex Guo" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Alex Guo"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Alex Guo">
+            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="Alex Guo" alt="Alex Guo">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>36</div>
+        <div><span>标签</span>33</div>
+        <div><span>分类</span>10</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/android/">android</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">11</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/linux/">linux</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/no-sql/">no sql</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/spring/">spring</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/大数据/">大数据</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/家常/">家常</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/常用工具/">常用工具</a>
+          <span class="category-list-count">5</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数据库/">数据库</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/网络/">网络</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/EventBus/" style="font-size: 10px;">EventBus</a> <a href="/tags/NIO/" style="font-size: 10px;">NIO</a> <a href="/tags/bin-log/" style="font-size: 13.33px;">bin_log</a> <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/filebeat/" style="font-size: 10px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10px;">flume</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/hbase/" style="font-size: 10px;">hbase</a> <a href="/tags/hdfs/" style="font-size: 10px;">hdfs</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">java基础</a> <a href="/tags/jvm/" style="font-size: 13.33px;">jvm</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/logstash-forward/" style="font-size: 10px;">logstash-forward</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 16.67px;">mysql</a> <a href="/tags/netty/" style="font-size: 10px;">netty</a> <a href="/tags/pcloud/" style="font-size: 20px;">pcloud</a> <a href="/tags/rocketMQ/" style="font-size: 10px;">rocketMQ</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/spring/" style="font-size: 13.33px;">spring</a> <a href="/tags/spring-cloud/" style="font-size: 10px;">spring cloud</a> <a href="/tags/spring-cloud-stream/" style="font-size: 10px;">spring cloud stream</a> <a href="/tags/spring-rabbitMQ/" style="font-size: 10px;">spring rabbitMQ</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 13.33px;">其他</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/" style="font-size: 10px;">数据采集</a> <a href="/tags/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/" style="font-size: 10px;">日志分析</a>
+    </div>
+    
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 Alex Guo
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <section class="nexmoe-posts">
+    
+    <div class="nexmoe-post">
+        <a href="/2018/12/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="大数据日志分析系统" class="lazyload">
+                    <h1>大数据日志分析系统</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta nexmoe-rainbow-fill">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月18日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.9k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
+        </div>
+
+        <article>
+            
+                <h1 id="原始日志量"><a href="#原始日志量" class="headerlink" title="原始日志量"></a>原始日志量</h1><p>每小时高的是否达到了 45303452条日志（四千五百多万条原始日志） ，某天日志量（这个随便选的）422110779 条（4亿两千多万）</p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ul>
+<li>1）对原始日志按域名进行分析包括： 请求数分析、独立IP分析、PV分析、地区分布运营商分布分析（根据ip计算）、浏览器操作系统分布分析（根据原始日志的agent进行分析）、热点页面分析、文件类型分析</li>
+<li>2）原始日志按域名、按天、按小时进行打包。</li>
+</ul>
+<h1 id="两种方案"><a href="#两种方案" class="headerlink" title="两种方案"></a>两种方案</h1><h1 id="方案１"><a href="#方案１" class="headerlink" title="方案１"></a>方案１</h1><ul>
+<li>→logstash-forward(边缘设备)  </li>
+<li>→ logstash (用logstast-before配置文件) </li>
+<li>→ Kafka (同时依赖zookeeper) </li>
+<li>→ logstash (用logstash-after配置文件) </li>
+<li>→ elaticsearch  </li>
+<li>→ python脚本 </li>
+<li>→ 统计日志本地然后上传到hadoop,各种统计结果到elasticsearch（nginx负载均衡）   </li>
+<li>→  界面展示</li>
+</ul>
+<p>边缘节点服务器会产生很多用户请求日志，要对日志进行各种分析和原始日志打包，最终分析结果进行收费、让客户可以获取请求日志各种分析结果、为客户进行原始日志按域名按天按小时分割打包。</p>
+<h1 id="方案２"><a href="#方案２" class="headerlink" title="方案２"></a>方案２</h1><ul>
+<li>–&gt; filebeat(或flume) </li>
+<li>–&gt; logstash </li>
+<li>–&gt; kafka(kafka依赖zookeeper) </li>
+<li>–&gt; spark统计计算 </li>
+<li>–&gt; 统计各种结果到elasticsearch（nginx负载均衡） </li>
+<li>–&gt; 界面展示</li>
+</ul>
+<p>–&gt; flume(自定义sink插件、验证可行待完成)<br>–&gt; 原始日志本地打包<br>–&gt; 原始日志hadoop上传 (当然这里也可以用hbase进行日志存储)</p>
+<h1 id="大数据实时计算需要的几个基本组件（一定要注意版本问题，java大数据机器间通信用的是RPC-而不是restful-api-如果版本不对应很可能出现版本间的兼容问题）："><a href="#大数据实时计算需要的几个基本组件（一定要注意版本问题，java大数据机器间通信用的是RPC-而不是restful-api-如果版本不对应很可能出现版本间的兼容问题）：" class="headerlink" title="大数据实时计算需要的几个基本组件（一定要注意版本问题，java大数据机器间通信用的是RPC 而不是restful_api,如果版本不对应很可能出现版本间的兼容问题）："></a>大数据实时计算需要的几个基本组件（一定要注意版本问题，java大数据机器间通信用的是RPC 而不是restful_api,如果版本不对应很可能出现版本间的兼容问题）：</h1><ul>
+<li><p>1.日志收集    -从CDN边缘节点服务器进行日志收集</p>
+</li>
+<li><p>2.日志缓存    -收集上来的日志存储到一个缓存设备</p>
+</li>
+<li><p>3.数据计算    -对收集的日志进行计算，域名请求数分析、地区统计等等</p>
+</li>
+<li><p>4.计算结果存储    -对各种分析结果进行存储，要方便查找</p>
+</li>
+<li><p>5.日志打包结果存储</p>
+<h2 id="公司刚开始的日志系统分布："><a href="#公司刚开始的日志系统分布：" class="headerlink" title="公司刚开始的日志系统分布："></a>公司刚开始的日志系统分布：</h2></li>
+<li><p>logstash-forward (边缘节点日志收集，上传到有logstash的机器)       -》</p>
+</li>
+<li><p>kafka  强大的数据缓存组建          （由logstash收集日志到kafka）    -》</p>
+</li>
+<li><p>elasticsearch (分布式、可扩展、实时的搜索与数据分析引擎)  (用logstash从kafka取出数据存到es)  -&gt;</p>
+</li>
+<li><p>spark（大规模数据计算引擎，从es取出原始日志然后通过spark计算结果）    -》</p>
+</li>
+<li><p>elasticsearch （进行计算结果数据存储），hadoop（原始日志打包存储） -》</p>
+</li>
+<li><p>nginx  + django服务  进行反向代理、负载均衡、地址隐藏            django进行界面展示-》</p>
+</li>
+<li><p>可客户直接访问观看</p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>zookeeper 3.4.7<br>kafka_2.11-0.8.2.1<br>logstash-2.2.2<br>elasticsearch-2.4.6<br>hadoop-2.6.4<br>spark-1.6.1 </p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>现在这样的系统由于经常出现问题，es报红，或者计算有问题等，这是由于刚开始一个人做完还没完全稳定就直接撤人了，转了几次到了我手里（因为我懂java，android但是部门基本上是以python为主）。到我手里了是个挑战也是一个机遇嘛，然后就开始了填坑之旅。。。。。。。。。。。。<br>还有一点是这样不能够很好的保持数据的实时性。　</p>
+<h2 id="改进："><a href="#改进：" class="headerlink" title="改进："></a>改进：</h2><p>其中遇到也解决了各种问题，就举例最主要的两个。<br>    1.线上的客户投诉获取不到原始日志，没那么多时间弄懂了再改进所以解决是 –》 写python脚本（到了这家公司开始用与部门统一的python）—》功能是从elasticsearch获取到某个域名原始日志然后写入本地文件（虽然不会写，但是这么多年编程scala的大概对日志的处理逻辑还是能看懂的），本地压缩，然后python调用hadoop本地命令行将日志上传到hadoop，先临时解决了问题<br>    2.elasticsearch报红、kafka堆积<br>    不知道怎样解决，只能看日志了，尝试用elasticsearch升级到了5.5.2，发现不会出现这样的问题。  但是又出现了新的问题：spark不能兼容这样的es版本，  给老大反映情况（提了 我倾向的用python脚本计算这一条路和对es降级尝试的路），听命于领导就先对原来的elasticsearch-2.4.6进行了配置改动-但是发现还是偶尔会出现es报红的情况。    只能用另一条路用python脚本代替spark，使用es自身的聚合功能进行计算，这样就解决了问题。<br>    总结：所以最后的解决办法是 去掉spark        先用python脚本直接聚合统计方式请求es获取结果,这样也满足线上要求，就先这样了。</p>
+<h1 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h1></li>
+<li><p>logstash-forward (边缘节点日志收集，上传到有logstash的机器)       -》</p>
+</li>
+<li><p>kafka  强大的数据缓存组建          （由logstash收集日志到kafka）    -》</p>
+</li>
+<li><p>elasticsearch (分布式、可扩展、实时的搜索与数据分析引擎)  (用logstash从kafka取出数据存到es)  -&gt;</p>
+</li>
+<li><p>python脚本（调用elasticsearch的resultful_api获取统计结果，同时打包原始日志到本地上传到hadoop）    -》</p>
+</li>
+<li><p>elasticsearch （进行计算结果数据存储），hadoop（原始日志打包存储） -》</p>
+</li>
+<li><p>nginx  + django服务  进行反向代理、负载均衡、地址隐藏            django进行界面展示-》</p>
+</li>
+<li><p>客户直接访问观看</p>
+<h2 id="版本-1"><a href="#版本-1" class="headerlink" title="版本"></a>版本</h2><p>zookeeper 3.4.7       <br>kafka_2.11-0.8.2.1   <br>logstash-2.2.2    <br>elasticsearch-5.5.2      <br>hadoop-2.6.4   <br>python以及python elasticsearch库 </p>
+<h2 id="现在的架构："><a href="#现在的架构：" class="headerlink" title="现在的架构："></a>现在的架构：</h2><p>公司在我刚开始接手的同时已经公司招聘了一个大数据人员（但不是本部门的），本部门也要有新项目有更大的数据量要计算需要跟他对接，但是等了好几个月仍然没有啥成果，老大忍不住了让我去看看他的大数据代码、提改进建议催进度（他主要用spark最终结果存到hbase，java写的代码），然后发现代码写的比较烂（因为java基本的静态变量 方法封装 继承多态等一看就是新手），业务逻辑也有点问题-跟老大反映，但是不同部门管不着也不能说啊，细节不说了，最终又开始了新架构的尝试之旅。</p>
+</li>
+<li><p>1.filbeat 边缘节点日志收集，上传到有logstash的机器（或者可以用flume)    -》</p>
+</li>
+<li><p>2.kafka  强大的数据缓存组件         （由logstash收集日志到kafka）    -》</p>
+</li>
+<li><p>3.spark（大规模数据计算引擎，从kafka取出日志，通过scala编写的spark代码把计算结果存入es）    -》</p>
+</li>
+<li><p>4.elasticsearch （进行计算结果数据存储） -》 </p>
+</li>
+<li><p>5.nginx + django   界面展示或接口让客户获取服务</p>
+</li>
+</ul>
+<p> 同时并行的原始日志打包   （刚开始日志打包考虑到了用spark或者flume直接上传到hadoop，但是后来发现现有机器这样的速度赶不上实际需要，）</p>
+<ul>
+<li>3.flume(自定义sink插件，filter插件 从kafka的另一个topic中获取日志数据，把日志按域名，按小时打包到本地）     -》</li>
+<li>4.python 调用hadoop命令行上传本地打包好的日志到hadoop -&gt;</li>
+<li>5.nginx + django   界面展示或接口让客户获取服务</li>
+</ul>
+<h2 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h2><p>apache-flume-1.6.0-bin  hadoop-2.6.4   kafka_2.11-1.0.0  spark-1.6.1-bin-hadoop2.6<br>elasticsearch-5.5.2     hbase         jdk1.8.0_144  logstash-6.1.1    zookeeper-3.4.5<br>jdk1.7.0_45(刚开始hadoop使用 后来spark要求更高就用了1.8版本） </p>
+<h2 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h2><p>当然每个阶段都需要增加监控，这里用的是zabbix监控配合脚本监控</p>
+
+            
+        </article>
+    </div>
+    
+</section>
+
+        <!--<div class="nexmoe-post-right">
+          <div class="nexmoe-fixed">
+            <div class="nexmoe-tool">
+              <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+            </div>
+          </div>
+        </div>-->
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1619942251159"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+  
+
+
+
+
+
+</body>
+
+</html>
